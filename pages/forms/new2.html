@@ -430,13 +430,14 @@
                                             <input id="B8" class="form-control" placeholder="0">
                                          </div> 
 
-                                        <label for="exampleInputPassword1">Via Click on On-Site Thumbs</label>
+                                         <div class="form-group">
+                                            <label for="exampleInputPassword1">Via Click on On-Site Thumbs</label>
                                             <p class="help-block">Counted toward Neon Click</p>
                                                  <div class="input-group">
                                                     <input id= "B9" type="text" placeholder = "Percentage" class="form-control">
                                                         <span class="input-group-addon">%</span>
                                                 </div>
-                                     
+                                        </div>
 
                                         <div class="form-group">
                                             <label>Status-quo Thumbnail Clicks that Neon Could Influence</label>
@@ -583,7 +584,7 @@
                                         <div class="form-group" >   
                                             <label>Actual Incremental Clicks</label>
                                                 <p class="help-block"> Calculated: Tracked Neon Clicks - (Inferred Default Clicks - Tracked Default Clicks) </p>
-                                                <input id="B38" disabled="disabled" class="form-control" placeholder="0">
+                                                <input id="B38" class="form-control" placeholder="0">
                                         </div>
 
 
@@ -704,46 +705,48 @@
                                     <div class="box-body">
 
                                         <div class="form-group" >   
-                                            <label>Actual Incremental Clicks</label>
-                                             
-                                                <input id="B46" disabled="disabled" class="form-control" placeholder="Same as above Actual Incremental Clicks">
+                                            <label>Estimated potential incremental revenue</label>
+                                                   <div class="input-group">
+                                                    <span class="input-group-addon">$</span>
+                                                        <input type="text" id="B54" disabled="disabled" class="form-control" placeholder="Same as above estimated potential incremenetal revenue">
+
+                                                    </div> 
                                         </div>
 
                                         <div class="form-group" >   
-                                            <label>CPM</label>
-                                                <p class="help-block"> Est </p> 
+                                            <label>Neon fee</label>
                                                    <div class="input-group">
                                                     <span class="input-group-addon">$</span>
-                                                        <input type="text" id="B47" class="form-control" placeholder="0.00">
+                                                        <input type="text" id="B55" disabled="disabled" class="form-control" placeholder="Same as above Neon fee">
+
+                                                    </div> 
+                                        </div>
+
+                                        <div class="form-group" >   
+                                            <label>Neon potential gain for client</label>
+                                                   <div class="input-group">
+                                                    <span class="input-group-addon">$</span>
+                                                        <input type="text" id="B56" disabled="disabled" class="form-control" placeholder="0.00">
 
                                                     </div> 
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Sell-through rate</label>
-                                                <p class="help-block"> Est </p> 
+                                            <label for="exampleInputPassword1">% of Est. potential incremental revenue going to Neon</label>
                                                 <div class="input-group">
-                                                    <input id= "B48" type="text" placeholder = "Percentage" class="form-control">
+                                                    <input id= "B58" type="text" disabled="disabled" placeholder = "Percentage" class="form-control">
                                                         <span class="input-group-addon">%</span>
                                                 </div>
                                         </div>
 
-                                        <div class="form-group" >   
-                                            <label>Ad:content ratio</label>
-                                                <p class="help-block"> Note: Depends on the client's interface. Also note that this may be higher based on our inclusion of the category above of "via autoplay attributed to a thumb" </p>
-                                                <input id="B49" class="form-control" placeholder="0">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">% of Est. potential incremental revenue going to Customer</label>
+                                                <div class="input-group">
+                                                    <input id= "B59" type="text" disabled="disabled" placeholder = "Percentage" class="form-control">
+                                                        <span class="input-group-addon">%</span>
+                                                </div>
                                         </div>
 
-
-                                        <div class="form-group" >   
-                                            <label>Estimated potential incremental revenue</label>
-                                                <!-- necessary? <p class="help-block"> Neon Pricing </p> -->
-                                                   <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                        <input type="text" disabled="disabled" id="B50" class="form-control" placeholder="0.00">
-
-                                                    </div> 
-                                        </div>
 
                                     </div> <!-- /.box-body -->
                     
@@ -753,7 +756,7 @@
                                 </form>
                             </div><!-- /.box -->
                         </div> <!-- /.col-md-8 -->
-                <!--</div> <!-- /.row -->
+                <!--</div> <!- /.row -->
 
 
                         <!-- right column -->
