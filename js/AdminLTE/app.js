@@ -49,6 +49,7 @@ function calculate() {
     var B28 = $('#B28').val(); 
     var B29 = B27 * (1 + percent( Number(B28) ) );
     $('#B27').val( B27 );
+    $('#B29').val( B29) ;
     var B31 = B23 * percent( B27 );
     var B32 = B24 * percent( B29 );
 
@@ -78,6 +79,19 @@ function calculate() {
     var B50 = (B46 * Number(B47) / 1000 * percent( Number(B48) ) *  Number(B49) ).toLocaleString();
     $('#B46').val( B46.toLocaleString() );
     $('#B50').val( B50.toLocaleString() );
+
+    var B54 = parseFloat(B50.replace(/,/g,'')); //turn B50 from a string to a number
+    var B55 = B42;
+    var B56 = B54 - B55;
+
+    var B58 = (B55/B54) * 100; 
+    var B59 = (B56/B54) * 100;
+
+    $('#B54').val( B54.toLocaleString() );
+    $('#B55').val( B55.toLocaleString() );
+    $('#B56').val( B56.toLocaleString() );
+    $('#B58').val( B58 );
+    $('#B59').val( B59 )
 
 
     //submit event function returns false in order to tell browser not to reload page
