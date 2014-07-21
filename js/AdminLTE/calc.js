@@ -29,6 +29,7 @@ function calculate() {
     var B17 = B14 / percent( Number(B16) );
     $('#B17').val( B17.toLocaleString() );
 
+<<<<<<< HEAD
     //var B20 = $('#B20').val();
     //var B21 = $('#B21').val();
     var B20= 1;
@@ -36,6 +37,10 @@ function calculate() {
     var B21 = 99;
     $('#B21').val(B21);
 
+=======
+    var B20 = $('#B20').val();
+    var B21 = $('#B21').val();
+>>>>>>> 35dcb13a99cf2371c0c3671905a613dad0186dac
 
     var B23 = B17 * percent( Number(B20) );
     var B24 = B17 * percent( Number(B21) );
@@ -46,10 +51,14 @@ function calculate() {
     $('#B25').val( B25.toLocaleString() );
 
     var B27 = B16;
+<<<<<<< HEAD
     // var B28 = $('#B28').val(); 
     var B28 = 10;
     $('#B28').val(B28);
 
+=======
+    var B28 = $('#B28').val(); 
+>>>>>>> 35dcb13a99cf2371c0c3671905a613dad0186dac
     var B29 = B27 * (1 + percent( Number(B28) ) );
     $('#B27').val( B27 );
     $('#B29').val( B29) ;
@@ -71,9 +80,13 @@ function calculate() {
     $('#B37').val( B37.toLocaleString() );
     $('#B38').val( B38.toLocaleString() );
 
+<<<<<<< HEAD
     // var B40 = $('#B40').val();
     B40 =  0.005;
     $('#B40').val(B40);
+=======
+    var B40 = $('#B40').val();
+>>>>>>> 35dcb13a99cf2371c0c3671905a613dad0186dac
     var B42 = Number(B40) * B38; 
     $('#B42').val( B42.toLocaleString() );
 
@@ -125,7 +138,10 @@ function calculate() {
     $('#B59_CONTAINER').show();
     $('#SummaryEconomicImpact').show();
     $('#submit_Box3').hide(); 
+<<<<<<< HEAD
     $('#DuringAnImplementation').show();
+=======
+>>>>>>> 35dcb13a99cf2371c0c3671905a613dad0186dac
     //submit event function returns false in order to tell browser not to reload page
     return false;
 }
@@ -156,6 +172,7 @@ $(document).ready(function(){
     $('#B58_CONTAINER').hide();
     $('#B59_CONTAINER').hide();
     $('#SummaryEconomicImpact').hide();
+<<<<<<< HEAD
     $('#DuringAnImplementation').hide();
 
 });
@@ -181,3 +198,7 @@ $('#main_form').submit(function () {
             B14: B14
         });
 }) 
+=======
+
+});
+>>>>>>> 35dcb13a99cf2371c0c3671905a613dad0186dac
