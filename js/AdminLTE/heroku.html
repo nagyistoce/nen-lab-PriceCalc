@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://devcenter.heroku.com/articles/git -->
+<html class=" js flexbox flexboxlegacy hashchange history rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent" dir="ltr" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Deploying with Git | Heroku Dev Center</title>
+<link href="https://devcenter.heroku.com/assets/favicon-ec1c49d2d16026c03484fa43c0d3a237.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<link rel="alternate" type="application/atom+xml" title="Heroku Recent Articles" href="http://feeds.feedburner.com/herokudevcenterarticles">
+<link rel="alternate" type="application/atom+xml" title="Heroku Changelog" href="http://feeds.feedburner.com/herokuchangelog">
+<link rel="search" type="application/opensearchdescription+xml" title="Heroku Dev Center" href="https://devcenter.heroku.com/opensearch.xml">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<script type="text/javascript" src="./heroku_files/pd.js"></script><script type="text/javascript" async="" src="./heroku_files/51b6483a434bba0f0c000016.js"></script><script type="text/javascript" async="" src="./heroku_files/ga.js"></script><script type="text/javascript" async="" src="./heroku_files/analytics.js"></script><script async="" src="./heroku_files/gtm.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-3.newrelic.com","errorBeacon":"bam.nr-data.net","licenseKey":"ae43571cb3","applicationID":"2057789","transactionName":"dVwNTUMJVV9WR05REUJaAFVUFRZAW1oW","queueTime":1,"applicationTime":253,"ttGuid":"","agentToken":null,"agent":"js-agent.newrelic.com/nr-411.min.js"}</script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o?o:n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({D5DuLP:[function(t,n){function e(t,n){var e=r[t];return e?e.apply(this,n):(o[t]||(o[t]=[]),void o[t].push(n))}var r={},o={};n.exports=e,e.queues=o,e.handlers=r},{}],handle:[function(t,n){n.exports=t("D5DuLP")},{}],G9z0Bl:[function(t,n){function e(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&p&&p.body){l.proto="https"===f.split(":")[0]||t.sslForHttp?"https://":"http://",i("mark",["onload",a()]);var n=p.createElement("script");n.src=l.proto+t.agent,p.body.appendChild(n)}}function r(){"complete"===p.readyState&&o()}function o(){i("mark",["domContent",a()])}function a(){return(new Date).getTime()}var i=t("handle"),u=window,p=u.document,s="addEventListener",c="attachEvent",f=(""+location).split("?")[0],l=n.exports={offset:a(),origin:f,features:[]};p[s]?(p[s]("DOMContentLoaded",o,!1),u[s]("load",e,!1)):(p[c]("onreadystatechange",r),u[c]("onload",e)),i("mark",["firstbyte",a()])},{handle:"D5DuLP"}],loader:[function(t,n){n.exports=t("G9z0Bl")},{}]},{},["G9z0Bl"]);</script><meta content="authenticity_token" name="csrf-param">
+<meta content="HaV2sjyO1nWYeK1ZU1eaOXfLN7S9IxTidVUw/cPgql0=" name="csrf-token">
+<meta name="description" content="Git is a powerful decentralized revision control system, and is the means for deploying apps to Heroku.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@herokudevcenter">
+<meta name="twitter:title" content="Deploying with Git | Heroku Dev Center">
+<meta name="twitter:description" content="Git is a powerful decentralized revision control system, and is the means for deploying apps to Heroku.">
+<meta name="google-site-verification" content="V3T3n-QnyNOZlSVZgEfdXaKkJKyfw2yIP55nR00C8ZU">
+<link href="./heroku_files/public-a04287f17cf165bb2d2c0e55ead322d4.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./heroku_files/print-da923c6287f6aa560c085707f9e15cb1.css" media="print" rel="stylesheet" type="text/css">
+<!--[if IE 6]>
+  <link href="https://universal-ie6-css.googlecode.com/files/ie6.0.3.css" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+<img src="https://secure.adnxs.com/seg?t=2&add=797706" width="1" height="1" border="0" style="display: none !important;"><img src="./heroku_files/saved_resource" width="1" height="1" border="0"><script type="text/javascript" src="./heroku_files/analytics"></script></head>
+<body>
+    <div class="heroku-header">
+  <div class="heroku-header-container container">
+
+    <div class="heroku-header-hgroup">
+      <a href="https://devcenter.heroku.com/">
+        heroku
+        <strong>dev center</strong>
+      </a>
+    </div>
+
+    <div class="heroku-header-nav">
+      <select class="js-select-nav"><option selected="" value="https://devcenter.heroku.com">Dev Center</option>
+<option value="https://www.heroku.com/pricing">Pricing</option>
+<option value="https://help.heroku.com/">Support</option>
+<option value="https://www.heroku.com/contact">Contact</option>
+<option value="https://dashboard.heroku.com/apps">My Apps</option>
+<option value="/logout?back_to=%2Farticles%2Fgit">Logout</option></select><ul>
+<li>
+          <a href="https://www.heroku.com/pricing">Pricing</a>
+        </li>
+        <li>
+          <a href="https://help.heroku.com/">Support</a>
+        </li>
+        <li>
+          <a href="https://www.heroku.com/contact">Contact</a>
+        </li>
+        <li>
+          <a href="https://dashboard.heroku.com/apps">My Apps</a>
+        </li>
+        <li id="notification-center-toggler">&nbsp;</li><li>
+          <a href="https://devcenter.heroku.com/logout?back_to=%2Farticles%2Fgit">Logout</a>
+        </li>
+      </ul>
+<div id="notification-center">
+  <div id="notification-gradient-overlay">
+    <div id="notification-scroll-wrapper">
+    <div id="notifications-empty">
+  You have no notifications
+</div></div>
+  </div>
+</div></div>
+  </div>
+</div>
+    <div class="devcenter-header">
+  <div class="devcenter-header-container container">
+    <ul class="main-nav">
+<li><a class="" href="https://devcenter.heroku.com/articles/quickstart">Get<span class="desktop-only">ting</span> started</a></li>
+      <li><a class="active" href="https://devcenter.heroku.com/categories/reference">Reference</a></li>
+      <li><a class="" href="https://devcenter.heroku.com/categories/learning">Learning</a></li>
+    </ul>
+<form class="nav-search" action="https://devcenter.heroku.com/search/raw" id="home-search" method="GET" _lpchecked="1">
+      <input class="js-search" id="query" name="query" placeholder="search" required="required" type="text" tabindex="1">
+</form>
+  </div>
+</div>
+    <section class="site-feedback-trigger"><a href="https://devcenter.heroku.com/articles/git#">Feedback</a>
+</section><div class="site-feedback-dialog">
+  <header><h2>Tell us what do you think about Dev Center</h2>
+  </header><form accept-charset="UTF-8" action="https://devcenter.heroku.com/site_feedbacks" class="new_site_feedback" id="new_site_feedback" method="post">
+<div style="margin:0;padding:0;display:inline">
+<input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="HaV2sjyO1nWYeK1ZU1eaOXfLN7S9IxTidVUw/cPgql0=">
+</div>
+    <textarea cols="40" id="site_feedback_text" name="site_feedback[text]" rows="20" edit_id="eta_0"></textarea><img class="ewe_ta_edit_button" edit_id="eta_0" src="chrome-extension://ljobjlafonikaiipfkggjbhkghgicgoh/icons/gumdrop.png"><input class="email" id="email" name="email" type="text" value=""><input id="site_feedback_sent_from_url" name="site_feedback[sent_from_url]" type="hidden" value="https://devcenter.heroku.com/articles/git"><div class="footer">
+      <span class="support">
+        For support issues, please visit our <a href="https://help.heroku.com/">support channels</a>
+      </span>
+      <span class="actions">
+        <a href="https://devcenter.heroku.com/articles/git#" class="cancel">Cancel</a>
+        <button name="button" type="submit">Submit</button>
+      </span>
+    </div>
+</form>
+</div>
+
+    <div id="sheet">
+      <div class="sheet-container container">
+        <div class="nocontent">
+  <div class="select-secondary-nav">
+    <select class="js-select-nav"><option class="option" selected="" value="#">
+          Deployment
+        </option>
+<option class="option" value="/categories/deployment">
+          More in Deployment...
+        </option>
+<optgroup label="Reference">
+<option class="option" value="/categories/heroku-architecture">
+                Heroku Architecture
+              </option>
+<option class="option" value="/categories/language-support">
+                Languages
+              </option>
+<option class="option" value="/categories/features">
+                Features
+              </option>
+<option class="option" value="/categories/command-line">
+                Command Line
+              </option>
+<option class="option" value="/categories/deployment">
+                Deployment
+              </option>
+<option class="option" value="/categories/troubleshooting">
+                Troubleshooting
+              </option>
+<option class="option" value="/categories/collaboration">
+                Collaboration
+              </option>
+<option class="option" value="/categories/security">
+                Security
+              </option>
+<option class="option" value="/categories/support">
+                Support
+              </option>
+<option class="option" value="/categories/billing">
+                Accounts &amp; Billing
+              </option>
+<option class="option" value="/categories/organization-accounts">
+                Organization Accounts
+              </option>
+<option class="option" value="/categories/heroku-postgres">
+                Heroku Postgres
+              </option>
+<option class="option" value="/categories/devcenter">
+                Dev Center
+              </option>
+<option class="option" value="/categories/labs">
+                Heroku Labs
+              </option>
+<option class="option" value="/categories/extending-heroku">
+                Extending Heroku
+              </option>
+<option class="option" value="/changelog">
+                Changelog
+              </option>
+</optgroup></select>
+</div>
+
+  <ul class="secondary-nav ">
+<li class="section">
+        <h2>Reference</h2>
+          <ul>
+<li class="">
+                <a href="https://devcenter.heroku.com/categories/heroku-architecture">Heroku Architecture</a>
+              </li>
+              <li class="">
+                <a href="https://devcenter.heroku.com/categories/language-support">Languages</a>
+              </li>
+              <li class="">
+                <a href="https://devcenter.heroku.com/categories/features">Features</a>
+              </li>
+              <li class="">
+                <a href="https://devcenter.heroku.com/categories/command-line">Command Line</a>
+              </li>
+              <li class="active">
+                <a href="https://devcenter.heroku.com/categories/deployment">Deployment</a>
+              </li>
+              <li class="">
+                <a href="https://devcenter.heroku.com/categories/troubleshooting">Troubleshooting</a>
+              </li>
+              <li class="">
+                <a href="https://devcenter.heroku.com/categories/collaboration">Collaboration</a>
+              </li>
+              <li class="">
+                <a href="https://devcenter.heroku.com/categories/security">Security</a>
+              </li>
+              <li class="">
+                <a href="https://devcenter.heroku.com/categories/support">Support</a>
+              </li>
+              <li class="">
+                <a href="https://devcenter.heroku.com/categories/billing">Accounts &amp; Billing</a>
+              </li>
+              <li class="">
+                <a href="https://devcenter.heroku.com/categories/organization-accounts">Organization Accounts</a>
+              </li>
+          </ul>
+<ul>
+<li class="">
+                <a href="https://devcenter.heroku.com/categories/heroku-postgres">Heroku Postgres</a>
+              </li>
+          </ul>
+<ul>
+<li class="">
+                <a href="https://devcenter.heroku.com/categories/devcenter">Dev Center</a>
+              </li>
+          </ul>
+<ul>
+<li class="">
+                <a href="https://devcenter.heroku.com/categories/labs">Heroku Labs</a>
+              </li>
+          </ul>
+<ul>
+<li class="">
+                <a href="https://devcenter.heroku.com/categories/extending-heroku">Extending Heroku</a>
+              </li>
+          </ul>
+<ul>
+<li class="">
+                <a href="https://devcenter.heroku.com/changelog">Changelog</a>
+              </li>
+          </ul>
+</li>
+  </ul>
+</div>
+
+<section class="main"><article class="article autolink "><div id="admin-tabs"></div>
+    
+    
+
+    <header><h1 class="doc">Deploying with Git</h1>
+    </header><div class="padder">
+
+      <p class="meta">
+        Last Updated: 16 June 2014
+      </p>
+
+      <p class="tags">
+        <a href="https://devcenter.heroku.com/tags/cli">cli</a> <a href="https://devcenter.heroku.com/tags/deploy">deploy</a> <a href="https://devcenter.heroku.com/tags/git">git</a>
+      </p>
+
+
+
+        <section id="table-of-contents"><h3>Table of Contents</h3>
+  <ul>
+<li><a href="https://devcenter.heroku.com/articles/git#tracking-your-app-in-git">Tracking your app in git</a></li>
+    <li><a href="https://devcenter.heroku.com/articles/git#creating-a-heroku-remote">Creating a Heroku remote</a></li>
+    <li><a href="https://devcenter.heroku.com/articles/git#deploying-code">Deploying code</a></li>
+    <li><a href="https://devcenter.heroku.com/articles/git#canceling-a-deployment">Canceling a deployment</a></li>
+    <li><a href="https://devcenter.heroku.com/articles/git#multiple-remotes-and-environments">Multiple remotes and environments</a></li>
+    <li><a href="https://devcenter.heroku.com/articles/git#build-cache">Build cache</a></li>
+    <li><a href="https://devcenter.heroku.com/articles/git#repo-size">Repo size</a></li>
+    <li><a href="https://devcenter.heroku.com/articles/git#other-limits">Other limits</a></li>
+    <li><a href="https://devcenter.heroku.com/articles/git#using-subversion-or-other-revision-control-systems">Using subversion or other revision control systems</a></li>
+    <li><a href="https://devcenter.heroku.com/articles/git#additional-resources">Additional resources</a></li>
+  </ul></section><p>Git is a powerful decentralized revision control system, and is the
+means for deploying apps to Heroku. You don’t need to be proficient with Git to
+use it for deploying code to Heroku, but you may find it valuable to learn the
+basics.</p>
+
+<h2 id="tracking-your-app-in-git"><a href="https://devcenter.heroku.com/articles/git#tracking-your-app-in-git">Tracking your app in git</a></h2>
+
+<div class="callout">
+<p>Heroku apps expect the app directory structure at the root of the repository.  If your app is inside a subdirectory in your repository, it won’t run when pushed to Heroku.</p>
+</div>
+
+<p>Before you can push an app to Heroku, you’ll need to initialize a local Git repo
+and commit your files to it.  For example, if you have an app in a directory, myapp, then create a new repo for it:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> cd myapp
+</span><span class="prompt">$</span><span class="function"> git init
+</span><span class="string">Initialized empty Git repository in .git/
+</span><span class="prompt">$</span><span class="function"> git add .
+</span><span class="prompt">$</span><span class="function"> git commit -m "my first commit"
+</span><span class="string">Created initial commit 5df2d09: my first commit
+</span><span class="string"> 44 files changed, 8393 insertions(+), 0 deletions(-)
+</span><span class="string"> create mode 100644 README
+</span><span class="string"> create mode 100644 Procfile
+</span><span class="string"> create mode 100644 app/controllers/source_file
+</span><span class="string">...
+</span></pre></div>
+</div>
+
+
+<p>This is a local repository, now residing inside the <code>.git</code> directory.  Nothing has
+been sent anywhere yet; you’ll need to create a remote and do a push to deploy
+your code to Heroku.</p>
+
+<h2 id="creating-a-heroku-remote"><a href="https://devcenter.heroku.com/articles/git#creating-a-heroku-remote">Creating a Heroku remote</a></h2>
+
+<p><a href="http://git-scm.com/book/en/Git-Basics-Working-with-Remotes">Git remotes</a> are references to remote repositories.  You can have any number of
+these, but for now we’ll focus on just the remote to Heroku.  The <code>heroku create</code> command creates a new application on Heroku – along with a git remote that must be used to receive your application source.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> heroku create
+</span><span class="string">Creating falling-wind-1624... done, stack is cedar
+</span><span class="string">http://falling-wind-1624.herokuapp.com/ | git@heroku.com:falling-wind-1624.git
+</span><span class="string">Git remote heroku added
+</span></pre></div>
+</div>
+
+
+<p>Heroku’s git remotes use SSH as a transport, so you’ll need to make sure your SSH public key <a href="https://devcenter.heroku.com/articles/keys">has been added to your Heroku account</a>.</p>
+
+<p>You can verify the remote in your git configuration as well:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> git remote -v
+</span><span class="string">heroku     git@heroku.com:falling-wind-1624.git (fetch)
+</span><span class="string">heroku     git@heroku.com:falling-wind-1624.git (push)
+</span></pre></div>
+</div>
+
+
+<p>You can also take an existing Git repo and add a remote using the git URL provided
+when you created your app.  You may need to do this to associate a Git repo with an existing application.  The <code>heroku git:remote</code> command will add this remote for you based on your applications git url.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> heroku git:remote -a falling-wind-1624
+</span><span class="string">Git remote heroku added.
+</span></pre></div>
+</div>
+
+
+<p>The remote is named <code>heroku</code> in this example, but you can name the remote
+anything you want by passing <code>-r other_remote_name</code>.  You may find it easier to follow the examples if you stick to using the <code>heroku</code> remote rather than using one with a different name.</p>
+
+<p>There is one special remote name: <code>origin</code>, which is the default for pushes.
+Using origin as the remote name will allow you to type just <code>git push</code> instead
+of <code>git push heroku</code>, but we recommend using an explicitly named remote.</p>
+
+<h2 id="deploying-code"><a href="https://devcenter.heroku.com/articles/git#deploying-code">Deploying code</a></h2>
+
+<p>Your Heroku app starts with a blank repository – it has no branches and no
+code. So the first time you deploy, you’ll need to specify a remote branch to
+push to. You can do your first push:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> git push heroku master
+</span><span class="string">Initializing repository, done.
+</span><span class="string">updating 'refs/heads/master'
+</span><span class="string">...
+</span></pre></div>
+</div>
+
+
+<p>This will push your code to the <code>heroku</code> remote, created earlier. Use this whenever you want to deploy the latest code committed in Git to Heroku.</p>
+
+<p>During the start of your first build, <code>Initializing repository</code> will be displayed while your app’s repository is created on Heroku. On subsequent builds, <code>Fetching repository</code> will be displayed while your app’s repository is fetched and prepared to accept your push.</p>
+
+<p>Branches pushed to Heroku other than <code>master</code> will be ignored by this command.  If you’re
+working out of another branch locally, you can either merge to master before
+pushing, or specify that you want to push your local branch to a remote master.
+To push a branch other than master, use this syntax:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> git push heroku yourbranch:master
+</span></pre></div>
+</div>
+
+
+<div class="note">
+<p>Applications that rely on git submodules are supported, in addition to many other <a href="https://devcenter.heroku.com/articles/git-submodules">dependency resolution strategies</a>.</p>
+</div>
+
+<h2 id="canceling-a-deployment"><a href="https://devcenter.heroku.com/articles/git#canceling-a-deployment">Canceling a deployment</a></h2>
+
+<p>When deploying code using <code>git push</code>, you can interrupt the build process on Heroku by pressing Ctrl + C on your machine.  As long as this is not done as the build process completes (generally around the “Launching…” message), and you’ve taken latency into account, then it will halt the build process and no new release will be generated.</p>
+
+<h2 id="multiple-remotes-and-environments"><a href="https://devcenter.heroku.com/articles/git#multiple-remotes-and-environments">Multiple remotes and environments</a></h2>
+
+<p>The same techniques used to deploy to production can be used to deploy a development branch of your application to a staging application on Heroku, as described in <a href="https://devcenter.heroku.com/articles/multiple-environments">Managing Multiple Environments for an App</a>.</p>
+
+<h2 id="build-cache"><a href="https://devcenter.heroku.com/articles/git#build-cache">Build cache</a></h2>
+
+<p>Buildpacks can optionally cache content for re-use between builds. A typical use-case for the buildpack is to speed up builds by caching dependencies so that they don’t have to be re-fetched on every build. This greatly speeds up builds.</p>
+
+<p>If you suspect that a build-problem is related to this caching, you can use the <a href="https://github.com/heroku/heroku-repo"><code>heroku-repo</code></a> plugin to clear the cache.</p>
+
+<h2 id="repo-size"><a href="https://devcenter.heroku.com/articles/git#repo-size">Repo size</a></h2>
+
+<p>While there is not a hard limit on your repository size, very large
+repositories (over 600MB) are not recommended; they may cause timeouts
+and slow pushes overall. Running <code>heroku apps:info</code> will show you your
+repository size. The app build cache is stored inside the app repository, so
+don’t be surprised if the repository is larger remotely than locally.</p>
+
+<p>Common causes of large repositories are binary files checked into the
+repo (git is notoriously bad at handling binaries) or
+constantly-changing development logs. Removing files committed by
+accident can be done with
+<a href="http://git-scm.com/book/en/Git-Internals-Maintenance-and-Data-Recovery#Removing-Objects">git filter-branch</a>,
+though after running it you will have to push with the <code>--force</code>
+option, which is something that requires coordination among your team.</p>
+
+<h2 id="other-limits"><a href="https://devcenter.heroku.com/articles/git#other-limits">Other limits</a></h2>
+
+<p>To protect the Git service, users are limited to a rolling window of 75 Git requests per hour, per SSH key. Once this limit is reached, Git requests are denied until request levels dropped below the limit for a few minutes, with the error message:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre> !  Too many requests for this Git repo. Please try again later.
+</pre></div>
+</div>
+
+
+<p>If you reach this limit, ensure there are not automated processes or scripts polling the Git repo.</p>
+
+<h2 id="using-subversion-or-other-revision-control-systems"><a href="https://devcenter.heroku.com/articles/git#using-subversion-or-other-revision-control-systems">Using subversion or other revision control systems</a></h2>
+
+<p>What if you’re already using Subversion or another revision control system to
+track your source code? Although we believe that Git is one of the best choices
+available for revision control, you don’t need to stop using your current
+revision control system. Git can be purely a deployment mechanism, existing
+side-by-side with your other tool.</p>
+
+<div class="callout">
+<p>You can learn much more about <code>.gitignore</code> in <a href="https://devcenter.heroku.com/articles/gitignore">our article on the topic</a>.</p>
+</div>
+
+<p>For example, if you are using Subversion, initialize your Git repo as described above. Then, add a <code>.gitignore</code> file to tell Git to ignore your Subversion directories.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> git init
+</span><span class="prompt">$</span><span class="function"> echo .svn &gt; .gitignore
+</span><span class="prompt">$</span><span class="function"> git add .
+</span><span class="prompt">$</span><span class="function"> git commit -m "using git for heroku deployment"
+</span></pre></div>
+</div>
+
+
+<p>Now tell Subversion to ignore Git:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> svn propset svn:ignore .git .
+</span><span class="string">property 'svn:ignore' set on '.'
+</span><span class="prompt">$</span><span class="function"> svn commit -m "ignoring git folder (git is used for heroku deployment)"
+</span></pre></div>
+</div>
+
+
+<div class="callout">
+<p>The <code>-f</code> (force flag) is recommended in order to avoid conflicts with other developers' pushes. Since you are not using Git for your revision control, but as a transport only, using the force flag is a reasonable practice.</p>
+</div>
+
+<p>Each time you wish to deploy to Heroku:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="prompt">$</span><span class="function"> git add -A
+</span><span class="prompt">$</span><span class="function"> git commit -m "commit for deploy to heroku"
+</span><span class="string">...
+</span><span class="string">
+</span><span class="prompt">$</span><span class="function"> git push -f heroku
+</span></pre></div>
+</div>
+
+
+<h2 id="additional-resources"><a href="https://devcenter.heroku.com/articles/git#additional-resources">Additional resources</a></h2>
+
+<ul>
+<li>
+<a href="http://railscasts.com/episodes/96">Git on Rails</a> shows common conventions
+for using Git to track Rails apps.</li>
+<li>Git cheat sheets for <a href="http://cheat.errtheblog.com/s/git">web</a> and
+<a href="https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf">print</a> consumption.</li>
+<li><a href="http://git.or.cz/course/svn.html">Git - SVN Crash Course</a></li>
+<li>
+<a href="http://progit.org/book/">Pro Git</a> and <a href="http://book.git-scm.com/">The Git Community Book</a> are great books covering all of Git.</li>
+</ul>
+<section class="article-extras"><div class="nocontent">
+  <section class="keep-reading"><h2 id="keep-reading"><a href="https://devcenter.heroku.com/articles/git#keep-reading">
+      Keep reading
+    </a></h2>
+    <ul>
+<li>
+          Category: <a href="https://devcenter.heroku.com/categories/deployment">Deployment</a>
+        </li>
+        <li>
+          <a href="https://devcenter.heroku.com/articles/keys">Managing Your SSH Keys</a>
+        </li>
+        <li>
+          <a href="https://devcenter.heroku.com/articles/git-submodules">Resolving Application Dependencies with Git Submodules</a>
+        </li>
+        <li>
+          <a href="https://devcenter.heroku.com/articles/multiple-environments">Managing Multiple Environments for an App</a>
+        </li>
+    </ul></section>
+</div>
+
+
+        <div class="nocontent">
+  <section class="js-article-feedback article-feedback secondary-article-section"><div class="step1">
+      <h2 id="feedback"><a href="https://devcenter.heroku.com/articles/git#feedback">Feedback</a></h2>
+
+        <p>
+          If this article is incorrect or outdated, or omits critical information, please <a class="open" href="https://devcenter.heroku.com/articles/git#">let us know</a>.
+          For all other issues, please see our <a href="https://devcenter.heroku.com/articles/support-channels">support channels</a>.
+        </p>
+        <form accept-charset="UTF-8" action="https://devcenter.heroku.com/articles/git/feedback" autocomplete="off" class="step2" method="post">
+<div style="margin:0;padding:0;display:inline">
+<input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="HaV2sjyO1nWYeK1ZU1eaOXfLN7S9IxTidVUw/cPgql0=">
+</div>
+          <input class="email" name="email" type="text" value=""><textarea name="feedback_text" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 44px;" edit_id="eta_1"></textarea><img class="ewe_ta_edit_button" edit_id="eta_1" src="chrome-extension://ljobjlafonikaiipfkggjbhkghgicgoh/icons/gumdrop.png"><p class="record-warning">
+            <span class="js-logged-in" style="display: inline;">
+              The maintainer of this article will have access to your email address.
+            </span>
+            <span class="js-anonymous">
+              <a href="https://devcenter.heroku.com/login?back_to=%2Farticles%2Fgit&utm_campaign=login&utm_medium=feedback&utm_source=web">Login</a> to record your email address with this feedback.
+            </span>
+          </p>
+          <input type="submit" value="Submit">
+</form>    </div>
+    <p class="step3">
+      Your feedback has been sent to the <a href="mailto:devcenter-feedback@heroku.com">Dev Center</a> team. Thank you.
+    </p>
+  </section>
+</div>
+
+      </section>
+</div>
+  </article><section class="nocontent" id="pagination"><a href="https://devcenter.heroku.com/articles/debugging-java-scala-builds" id="previous" rel="prev">« Debugging Java, Scala, and Play Framework builds on Heroku</a>
+  <a href="https://devcenter.heroku.com/articles/fork-app" id="next" rel="next">Forking Applications »</a>
+</section></section>
+</div>
+    </div>
+
+    <!-- Google Tag Manager -->
+  <noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-JD26" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-JD26');</script><!-- End Google Tag Manager --><script src="./heroku_files/public-5badabec1238c04b931c22cd7b8afc3d.js" type="text/javascript"></script><!--[if lt IE 9]>
+  <script src="/assets/public/vendor/selectivizr-1.0.min-e12aff0870999e4ee41b32e5aa7dc15d.js" type="text/javascript"></script>
+  <![endif]--><script>
+    
+$( function() {
+  setAccordion(3);
+
+  var $feedback = $('.js-article-feedback'),
+      $step1 = $feedback.find('.step1'),
+      $openStep2 = $step1.find('.open'),
+      $step2 = $feedback.find('.step2'),
+      $step3 = $feedback.find('.step3');
+
+  var openFeedback = function() {
+    $openStep2.replaceWith($openStep2.text())
+    $step2.fadeIn(10, function(){
+      if (!iPhone && !iPad){
+        $('html, body').animate({scrollTop:$(document).height()}, 1500);
+      }
+    }).find('textarea').focus();
+  }
+
+  $openStep2.click( function(e){
+    e.preventDefault()
+    if (! $step2.is(':visible')) openFeedback() // already open in small screens
+  })
+
+  $step2.submit( function(e){
+    e.preventDefault();
+    $step2.find('input[type="submit"]').attr('disabled', true).val('Sending');
+    $.post( $step2.attr('action'), $step2.serialize(),
+      function(data){
+        $step1.fadeOut(10);
+        $step1.find('textarea').val('');
+        $step3.fadeIn(10);
+      }
+    )
+  })
+
+  $('.js-article-feedback textarea').autosize()
+
+  if (document.location.href.indexOf('#feedback') != -1) {
+    openFeedback()
+  }
+});
+
+  </script><script>
+    
+  </script>
+
+
+<textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; word-wrap: break-word; overflow: hidden; -webkit-transition: none; transition: none; height: 0px !important; min-height: 0px !important; font-family: &#39;Lucida Grande&#39;; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; word-spacing: 0px; text-indent: 0px; line-height: 19.25px; width: 94px;" class="autosizejs" id="autosizejs"></textarea>
+
+<script type="text/javascript">piAId="37622";piCId="30300";(function(){function a(){var b=document.createElement("script");b.type="text/javascript";b.src=("https:"==document.location.protocol?"https://pi":"http://cdn")+".pardot.com/pd.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)}window.attachEvent?window.attachEvent("onload",a):window.addEventListener("load",a,!1)})();</script>
+
+<script type="text/javascript">(function(){window._pa=window._pa||{};var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https:":"http:")+"//tag.perfectaudience.com/serve/51b6483a434bba0f0c000016.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><a id="notification-center-badge" href="https://devcenter.heroku.com/articles/git#" style="display: none; top: 7.59375px; left: 1271px;">0</a><script src="./heroku_files/nr-411.min.js"></script><script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }}catch(e){}</script><script type="text/javascript" src="./heroku_files/ae43571cb3"></script></body></html>
