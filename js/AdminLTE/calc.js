@@ -145,6 +145,7 @@ function calculate() {
 
     $('#DuringAnImplementation').show();
 
+    $('#collapse').show();
     //submit event function returns false in order to tell browser not to reload page
     return false;
 }
@@ -185,7 +186,7 @@ $(document).ready(function(){
     $('#saveSuccessful').hide();
     $('#saveSuccessful2').hide();
     $('#saveSuccessful3').hide();
-
+    $('#collapse').hide();
 });
 
 /* /Create our Firebase reference
@@ -284,7 +285,7 @@ $('#saveBox2').click(function (){
         B42: $('#B42').val(),
         });
 
-        $('#saveSuccessful2').fadeIn(500).delay(2000).fadeOut(1000);
+        $('#saveSuccessful2').fadeIn(500).delay(1500).fadeOut(1000);
 })
 
 $('#saveBox3').click(function (){
