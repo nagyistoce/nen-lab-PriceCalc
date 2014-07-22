@@ -343,7 +343,7 @@
 
                 <!-- Main content -->
                 <section class="content">
-                    <div class="row"> <!-- WHAT TO DO WITH THIS SHIT -->
+                   <div class="row"> <!-- WHAT TO DO WITH THIS SHIT -->
 
                         <!-- left column -->
                         <div class="col-md-8">
@@ -364,6 +364,11 @@
                                 <!-- form start -->
                                 <form id ="main_form" role="form">
                                     <div class="box-body">
+
+                                         <div class="form-group" >   
+                                            <label>Company</label>
+                                            <input id="companyName" class="form-control" placeholder="Name">
+                                         </div> 
 
                                         <div class="form-group" >   
                                             <label>Video Streams Consumed On Site/Mo</label>
@@ -400,17 +405,17 @@
                                         </div>
                                     </div> <!-- /.box-body -->
                     
-                                    <!-- SUBMIT BTN FOR BOX 1 
-                                        <div class="box-footer">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div> -->
-                            </div><!-- /.box -->
+                                     <!-- SAVE BTN FOR BOX 1 -->
+                                        <div class="box-footer" id ="saveBox1">
+                                            <button type="submit" id="saveBox1" class="btn btn-default">Save</button>
+                                        </div> 
+                            </div> <!-- .box primary-->
                         </div> <!-- /.col md 8 --> 
-                </div> <!-- /.row -->
+                    <!-- RM? </div> <!-- /.row -->
 
                 <!-- SECOND TESTING BOX LOLOLOL -->
 
-                <div class="row"> 
+               <!-- <div class="row"> -->
                         <!-- left column -->
                         <div class="col-md-8">
                             <!-- general form elements -->
@@ -558,18 +563,18 @@
 
                                     </div> <!-- /.box-body -->
                     
-                                        <!-- SUBMIT BTN FOR 2nD BOX 
+                                     <!-- SAVE BTN FOR BOX 1 -->
                                         <div class="box-footer">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div> -->
+                                            <button type="submit" id="saveBox2" class="btn btn-default">Save</button>
+                                        </div> 
 
                         
-                            </div>
-                    </div> <!-- /.row -->
-            </div><!-- /.box --> 
+                            </div> <!-- box info -->
+                    </div> <!-- /col md 8 -->
+            <!-- RM? </div> <!-- /.row --> 
 
             <!-- THIRD TESTING POOP -->
-                    <div class="row"> <!-- WHAT TO DO WITH THIS SHIT -->
+                   <!-- RM? <div class="row"> <!-- WHAT TO DO WITH THIS SHIT -->
                         <!-- left column -->
                         <div class="col-md-8">
                             <!-- general form elements -->
@@ -625,19 +630,22 @@
                                         </div>
 
                                     </div> <!-- /.box-body -->
-                    
-                                        <!-- SUBMIT BTN FOR 3RD BOX --> 
+
+
+                                        <!-- SUBMIT BTN FOR 3RD BOX , before and after--> 
                                             <div class="box-footer">
                                             <button type="submit" id= "submit_Box3" class="btn btn-primary">Submit</button>
-                                        </div> 
+                                             <button type="submit" id="saveBox3" class="btn btn-default">Save</button>
+
+                                            </div> 
                                 <!--</form>-->
                             </div><!-- /.box -->
-                        </div> 
-                </div> <!-- /.row -->
+                        </div>  <!-- col md 8 -->
+                <!--</div> <!-- /.row -->
 
                            <!-- TRYNA 4TH MAIN BOX --> 
 
-                    <div class="row"> 
+                 <!--  RM? <div class="row"> 
                         <!-- left column -->
                         <div class="col-md-8">
                             <!-- general form elements -->
@@ -695,39 +703,41 @@
                                     </div> <!-- /.box-body -->
                     
                                         <div class="box-footer">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Save to History</button>
+                                            <button type="makeForm" class="btn btn-info">Generate PDF Report</button>
                                         </div>
+
+                                    
                             </div><!-- /.box -->
                         </div> <!-- /.col-md-8 -->
-                <!--</div> <!- /.row -->
+                <!-- REMOVE? </div> <!-- /.row -->
 
 
-                        <!-- right column HERE 
-                        <div class="col-md-4">
-                             general form elements disabled -->
-                            <!-- <div class="box box-warning">
+                        <!-- right column HERE -->
+                        <div class="col-md-4" >
+                             <!--general form elements disabled -->
+                            <div class="box box-warning">
                                 <div class="box-header">
                                     <h3 class="box-title">Customer Profile </h3>
 
                                 </div><!-- /.box-header -->
-                               <!-- <div class="box-body">
+                               <div class="box-body">
                                     <form role="form">
                                         <!-- text input -->
-                                        <!-- <div class="form-group">
+                                         <div class="form-group">
                                             <label>Text</label>
                                             <input type="text" class="form-control" placeholder="Enter ..."/>
-                                        </div>
+                                        </div>  
+                                    </form>
 
-                                        <!-- company research goes here -->
-                                        
-                                    <!-- </form>
                                 </div><!-- /.box-body -->
-                            <!-- </div><!-- /.box -->
-                        <!-- HERE </div><!--/.col (right) -->
+                            </div><!-- /.box -->
+</div>
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
-        </div><!-- ./wrapper -->
+     </div><!-- ./wrapper -->
+
 
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>

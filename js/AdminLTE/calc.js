@@ -13,6 +13,9 @@ function percent(num){
 
 function calculate() {
 
+    var companyName = $('companyName').val();
+    $('companyName').val(companyName);
+
     // Retrieve value from the amount field
     var B8 = $('#B8').val();
     var B9 = $('#B9').val();
@@ -129,6 +132,9 @@ function calculate() {
     $('#B59_CONTAINER').show();
     $('#SummaryEconomicImpact').show();
     $('#submit_Box3').hide(); 
+    $('#saveBox1').show();
+    $('#saveBox2').show();
+    $('#saveBox3').show();
 
     $('#DuringAnImplementation').show();
 
@@ -163,6 +169,9 @@ $(document).ready(function(){
     $('#B59_CONTAINER').hide();
     $('#SummaryEconomicImpact').hide();
     $('#DuringAnImplementation').hide();
+    $('#saveBox1').hide();
+    $('#saveBox2').hide();
+    $('#saveBox3').hide();
 
 });
 
@@ -178,12 +187,16 @@ $('#main_form').submit(function () {
 }) */
 
 // Create our Firebase reference
-var myDataRef = new Firebase('https://neonpricing.firebaseio.com/');
+var myDataRef = new Firebase("https://neonpricing.firebaseio.com/");
+
 $('#main_form').submit(function () {
-        console.log(B14);
         var B14 = $('#B14').val();
-        console.log(B14);
+        var companyName = $('#companyName').val();
+        //console.log(companyName);
+
         myDataRef.push({
-            B14: B14
+            B14: B14,
+            companyName:companyName
         });
 })
+
