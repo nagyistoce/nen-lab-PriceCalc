@@ -105,8 +105,13 @@ function calculate() {
     $('#B58').val( B58 );
     $('#B59').val( B59 )
 
-    // scrollTop 
-    $("html,body").animate({ scrollTop: 0}, 600);
+    //scrollTop 
+    if (i == 0){
+        $("html,body").animate({ scrollTop: 0}, 600);
+        i++;
+    } else {
+        //don't scroll
+    }
 
     //Unhide Shit
     $('#B14_CONTAINER').show();
@@ -135,6 +140,8 @@ function calculate() {
     $('#saveBox1').show();
     $('#saveBox2').show();
     $('#saveBox3').show();
+    $('#box1-footer').show();
+
 
     $('#DuringAnImplementation').show();
 
@@ -142,7 +149,9 @@ function calculate() {
     return false;
 }
 
+var i =0; //counter to stop scrolling to top after first submission of #main_form
 $('#main_form').submit( calculate );
+
 
 // Hide Shit
 $(document).ready(function(){
@@ -172,6 +181,10 @@ $(document).ready(function(){
     $('#saveBox1').hide();
     $('#saveBox2').hide();
     $('#saveBox3').hide();
+    $('#box1-footer').hide();
+    $('#saveSuccessful').hide();
+    $('#saveSuccessful2').hide();
+    $('#saveSuccessful3').hide();
 
 });
 
@@ -186,7 +199,7 @@ $('#main_form').submit(function () {
         });
 }) */
 
-// Create our Firebase reference
+/* Create our Firebase reference
 var myDataRef = new Firebase("https://neonpricing.firebaseio.com/");
 
 $('#main_form').submit(function () {
@@ -198,5 +211,91 @@ $('#main_form').submit(function () {
             B14: B14,
             companyName:companyName
         });
+}) */
+
+ var myDataRef = new Firebase("https://neonpricing.firebaseio.com/");
+ var newPushsRef = myDataRef.push();
+
+$('#main_form').submit(function () {
+ newPushsRef.set({
+    companyName: $('#companyName').val(),
+    B8: $('#B8').val(),
+    B9: $('#B9').val(),
+    B14: $('#B14').val(),
+    B16: $('#B16').val(),
+    B17: $('#B17').val(),
+    B20: 1,
+    B21: 99,
+    B23: $('#B23').val(),
+    B24: $('#B24').val(),
+    B25: $('#B25').val(),
+    B27: $('#B27').val(),
+    B29: $('#B29').val(),
+    B31: $('#B31').val(),
+    B32: $('#B32').val(),
+    B34: $('#B34').val(),
+    B35: $('#B35').val(),
+    B37: $('#B37').val(),
+    B38: $('#B38').val(),
+    B42: $('#B42').val(),
+    B46: $('#B46').val(),
+    B50: $('#B50').val(),
+    B54: $('#B54').val(),
+    B55: $('#B55').val(),
+    B56: $('#B56').val(),
+    B58: $('#B58').val(),
+    B59: $('#B59').val(),
+    });    
+
+})
+var pushedMyDataRef =  newPushsRef;
+
+$('#saveBox1').click(function (){
+    console.log("whuu");
+     pushedMyDataRef.set({
+    
+        B8: $('#B8').val(),
+        B9: $('#B9').val(),
+        B14: $('#B14').val(),
+        B16: $('#B16').val(),
+        B17: $('#B17').val(),
+        });
+
+        $('#saveSuccessful').fadeIn(500).delay(2000).fadeOut(1000);
 })
 
+$('#saveBox2').click(function (){
+    console.log("whuu");
+     pushedMyDataRef.set({
+        B20: 1,
+        B21: 99,
+        B23: $('#B23').val(),
+        B24: $('#B24').val(),
+        B25: $('#B25').val(),
+        B27: $('#B27').val(),
+        B28: $('#B28').val(),
+        B29: $('#B29').val(),
+        B31: $('#B31').val(),
+        B32: $('#B32').val(),
+        B34: $('#B34').val(),
+        B35: $('#B35').val(),
+        B37: $('#B37').val(),
+        B38: $('#B38').val(),
+        B42: $('#B42').val(),
+        });
+
+        $('#saveSuccessful2').fadeIn(500).delay(2000).fadeOut(1000);
+})
+
+$('#saveBox3').click(function (){
+    console.log("whuu");
+     pushedMyDataRef.set({
+        B46: $('#B46').val(),
+        B47: $('#B47').val(),
+        B48: $('#B48').val(),
+        B49: $('#B49').val(),
+        B50: $('#B50').val(),
+        });
+
+        $('#saveSuccessful3').fadeIn(500).delay(2000).fadeOut(1000);
+})
