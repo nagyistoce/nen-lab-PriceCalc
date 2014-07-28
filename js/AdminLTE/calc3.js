@@ -141,7 +141,7 @@ function calculate() {
     $('#saveBox2').show();
     $('#saveBox3').show();
     $('#box1-footer').show();
-
+    $('#rightSidebar').show();
 
     $('#DuringAnImplementation').show();
 
@@ -187,6 +187,7 @@ $(document).ready(function(){
     $('#saveSuccessful2').hide();
     $('#saveSuccessful3').hide();
     $('#collapse').hide();
+    $('#rightSidebar').hide();
 
 });
 
@@ -215,11 +216,20 @@ $('#main_form').submit(function () {
         });
 }) */
 
- var myDataRef = new Firebase("https://neonpricing.firebaseio.com/");
- var newPushRef = myDataRef.push();
+
+var newPushRef;
+var myDataRef;
+var companyRef;
 
 $('#main_form').submit(function () {
- newPushRef.set({
+
+    var companyName = $('#companyName').val();
+    console.log(companyName);
+    myDataRef = new Firebase("https://neonpricing.firebaseio.com/"+ companyName);
+//    newPushRef = myDataRef.push(); //push adds to a list of data. generates a unique ID 
+    companyRef = myDataRef.child("data");
+
+    companyRef.set({
     companyName: $('#companyName').val(),
     B8: $('#B8').val(),
     B9: $('#B9').val(),
@@ -252,7 +262,7 @@ $('#main_form').submit(function () {
 })
 
 
-var pushedMyDataRef =  newPushRef;
+var pushedMyDataRef =  companyRef; //what do I .set()? pushedMyDataRef or newPushRef? 
 
 $('#saveBox1').click(function (){
     console.log("whuu");
