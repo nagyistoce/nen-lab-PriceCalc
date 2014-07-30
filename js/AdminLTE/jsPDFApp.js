@@ -140,39 +140,103 @@ function demoFromHTML(){
 	doc.addPage();
 
 	doc.setFontSize(13);
-	doc.text(20, 30, 'Tracked Neon Clicks');
+	doc.text(20, 20, 'Tracked Neon Clicks');
 	doc.setFontSize(12);
-	doc.text(20, 35, $('#B32').val() );
+	doc.text(20, 25, $('#B32').val() );
 
 	doc.setFontSize(13);
-	doc.text(20, 45, 'Inferred Default Clicks');
+	doc.text(20, 35, 'Inferred Default Clicks');
 	doc.setFontSize(12);
-	doc.text(20, 50, $('#B34').val() );
+	doc.text(20, 40, $('#B34').val() );
 
 	doc.setFontSize(13);
-	doc.text(20, 60, 'Inferred Neon Clicks');
+	doc.text(20, 50, 'Inferred Neon Clicks');
 	doc.setFontSize(12);
-	doc.text(20, 65, $('#B35').val() );
+	doc.text(20, 55, $('#B35').val() );
 
 	doc.setFontSize(13);
-	doc.text(20, 75, 'Inferred Incremental Clicks');
+	doc.text(20, 65, 'Inferred Incremental Clicks');
 	doc.setFontSize(12);
-	doc.text(20, 80, $('#B37').val() );
+	doc.text(20, 70, $('#B37').val() );
 
 	doc.setFontSize(13);
-	doc.text(20, 90, 'Actual Incremental Clicks');
+	doc.text(20, 80, 'Actual Incremental Clicks');
 	doc.setFontSize(12);
-	doc.text(20, 95, $('#B38').val() );
+	doc.text(20, 85, $('#B38').val() );
 
 	doc.setFontSize(13);
-	doc.text(20, 105, 'CPC for Incremental Clicks');
+	doc.text(20, 90, 'CPC for Incremental Clicks');
 	doc.setFontSize(12);
-	doc.text(20, 110, $('#B40').val() );
+	doc.text(20, 95, $('#B40').val() );
 
 	doc.setFontSize(13);
-	doc.text(20, 120, 'Neon Fee per Month');
+	doc.text(20, 100, 'Neon Fee per Month');
 	doc.setFontSize(12);
-	doc.text(20, 125, $('#B42').val() );
+	doc.text(20, 105, $('#B42').val() );
+
+	doc.setFontSize(13);
+	doc.setFontStyle('bold');
+	doc.text(20, 115, "By comparison: Client's estimated potential incremental revenue");
+
+	doc.setFontSize(13);
+	doc.setFontStyle('normal');
+	doc.text(20, 125, 'Actual Incremental Clicks');
+	doc.setFontSize(12);
+	doc.text(20, 130, $('#B46').val() );
+
+	doc.setFontSize(13);
+	doc.text(20, 140, 'CPM');
+	doc.setFontSize(12);
+	doc.text(20, 145, $('#B47').val() );
+
+	doc.setFontSize(13);
+	doc.text(20, 155, 'Sell-through rate');
+	doc.setFontSize(12);
+	doc.text(20, 160, $('#B48').val() );
+
+	doc.setFontSize(13);
+	doc.text(20, 170, 'Ad:content ratio');
+	doc.setFontSize(12);
+	doc.text(20, 175, $('#B49').val() );
+
+	doc.setFontSize(13);
+	doc.text(20, 185, 'Estimated potential incremental revenue');
+	doc.setFontSize(12);
+	doc.text(20, 190, $('#B50').val() );
+
+	doc.setFontSize(13);
+	doc.setFontStyle('bold');
+	doc.text(20, 200, "Summary Economic Impact");
+
+	doc.setFontSize(13);
+	doc.setFontStyle('normal');
+	doc.text(20, 210, 'Estimated potential incremental revenue');
+	doc.setFontSize(12);
+	doc.text(20, 215, $('#B54').val() );
+
+	doc.setFontSize(13);
+	doc.setFontStyle('normal');
+	doc.text(20, 225, 'Neon Fee');
+	doc.setFontSize(12);
+	doc.text(20, 230, $('#B55').val() );
+
+	doc.setFontSize(13);
+	doc.setFontStyle('normal');
+	doc.text(20, 240, 'Neon potential gain for client');
+	doc.setFontSize(12);
+	doc.text(20, 245, $('#B56').val() );
+
+	doc.setFontSize(13);
+	doc.setFontStyle('normal');
+	doc.text(20, 255, '% of Est. potential incremental revenue going to Neon');
+	doc.setFontSize(12);
+	doc.text(20, 260, $('#B58').val() );
+
+	doc.setFontSize(13);
+	doc.setFontStyle('normal');
+	doc.text(20, 270, '% of Est. potential incremental revenue going to Customer');
+	doc.setFontSize(12);
+	doc.text(20, 275, $('#B59').val() );
 
 	doc.save('Test.pdf');
     } 
