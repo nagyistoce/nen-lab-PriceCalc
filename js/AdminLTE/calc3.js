@@ -127,6 +127,7 @@ function calculate() {
     $('#B35_CONTAINER').show();
     $('#B37_CONTAINER').show();
     $('#B38_CONTAINER').show();
+    $('#B40_CONTAINER').show();
     $('#B42_CONTAINER').show();
     $('#B46_CONTAINER').show();
     $('#B50_CONTAINER').show();
@@ -169,6 +170,7 @@ $(document).ready(function(){
     $('#B35_CONTAINER').hide();
     $('#B37_CONTAINER').hide();
     $('#B38_CONTAINER').hide();
+    $('#B40_CONTAINER').hide();
     $('#B42_CONTAINER').hide();
     $('#B46_CONTAINER').hide();
     $('#B50_CONTAINER').hide();
@@ -219,7 +221,7 @@ $('#main_form').submit(function () {
 
 var newPushRef;
 var myDataRef;
-var companyRef;
+var companyRef; // for the "data" child and url 
 
 $('#main_form').submit(function () {
 
