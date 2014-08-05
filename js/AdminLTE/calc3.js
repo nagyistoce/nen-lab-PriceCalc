@@ -7,6 +7,7 @@
 
  // This function performs a basic calcuation. 
 
+
 function percent(num){
     return num/100;
 }
@@ -17,16 +18,14 @@ function calculate() {
     $('companyName').val(companyName);
 
     // Retrieve value from the amount field
-    var B8 = $('#B8').val();
-    var B9 = $('#B9').val();
 
     // Do actual calculation
-    var B14 = Number(B8) * percent( Number(B9) );
+    var B14 = $('#B14').val();
     // Store the value in the total field. Note that the 'Number' 
     // function converts a string of numbers into numbers
     $('#B14').val( B14.toLocaleString() ); //.toFixed(2) );
     // toFixed ensures there are only two digits after the dec point
-
+    console.log(B14);
 
     var B16 = $('#B16').val();
     var B17 = B14 / percent( Number(B16) );
@@ -51,8 +50,7 @@ function calculate() {
 
     var B27 = B16;
 
-    // var B28 = $('#B28').val(); 
-    var B28 = 10;
+    var B28 = $('#B28').val(); 
     $('#B28').val(B28);
 
     var B29 = B27 * (1 + percent( Number(B28) ) );
@@ -94,16 +92,18 @@ function calculate() {
 
     var B54 = parseFloat(B50.replace(/,/g,'')); //turn B50 from a string to a number
     var B55 = B42;
+
     var B56 = B54 - B55;
 
     var B58 = (B55/B54) * 100; 
+
     var B59 = (B56/B54) * 100;
 
     $('#B54').val( B54.toLocaleString() );
     $('#B55').val( B55.toLocaleString() );
     $('#B56').val( B56.toLocaleString() );
-    $('#B58').val( B58 );
-    $('#B59').val( B59 )
+    $('#B58').val(B58);
+    $('#B59').val(B59);
 
     //scrollTop 
     if (i == 0){
@@ -114,8 +114,7 @@ function calculate() {
     }
 
     //Unhide Shit
-    $('#B14_CONTAINER').show();
-    $('#B17_CONTAINER').show();
+    // hide this bc David doesn't want to see it    $('#B17_CONTAINER').show(); 
     $('#B23_CONTAINER').show();
     $('#B24_CONTAINER').hide();
     $('#B25_CONTAINER').show();
@@ -147,6 +146,9 @@ function calculate() {
     $('#DuringAnImplementation').show();
 
     $('#collapse').show();
+
+    document.getElementById("backgroundCurrentAssumptions").className = "box box-primary collapsed-box";
+
     //submit event function returns false in order to tell browser not to reload page
     return false;
 }
@@ -157,7 +159,6 @@ $('#main_form').submit( calculate );
 
 // Hide Shit
 $(document).ready(function(){
-    $('#B14_CONTAINER').hide();
     $('#B17_CONTAINER').hide();
     $('#B23_CONTAINER').hide();
     $('#B24_CONTAINER').hide();
@@ -191,32 +192,10 @@ $(document).ready(function(){
     $('#collapse').hide();
     $('#rightSidebar').hide();
 
+    $('#byComparison').hide();
+
+
 });
-
-/* /Create our Firebase reference
-var myDataRef = new Firebase('https://neonpricing.firebaseio.com/');
-$('#main_form').submit(function () {
-        console.log(B14);
-        var B14 = $('#B14').val();
-        console.log(B14);
-        myDataRef.push({
-            B14: B14
-        });
-}) */
-
-/* Create our Firebase reference
-var myDataRef = new Firebase("https://neonpricing.firebaseio.com/");
-
-$('#main_form').submit(function () {
-        var B14 = $('#B14').val();
-        var companyName = $('#companyName').val();
-        //console.log(companyName);
-
-        myDataRef.push({
-            B14: B14,
-            companyName:companyName
-        });
-}) */
 
 
 var newPushRef;
@@ -233,8 +212,6 @@ $('#main_form').submit(function () {
 
     companyRef.set({
     companyName: $('#companyName').val(),
-    B8: $('#B8').val(),
-    B9: $('#B9').val(),
     B14: $('#B14').val(),
     B16: $('#B16').val(),
     B17: $('#B17').val(),
@@ -264,14 +241,14 @@ $('#main_form').submit(function () {
 })
 
 
+
 var pushedMyDataRef =  companyRef; //what do I .set()? pushedMyDataRef or newPushRef? 
 
 $('#saveBox1').click(function (){
     console.log("whuu");
      pushedMyDataRef.set({
     
-        B8: $('#B8').val(),
-        B9: $('#B9').val(),
+
         B14: $('#B14').val(),
         B16: $('#B16').val(),
         B17: $('#B17').val(),
