@@ -76,7 +76,15 @@ function calculate() {
 
 
     // var B40 = $('#B40').val();
-    B40 =  0.005;
+    //if user input a CPC value, use that value in the calculation. else, use default value of half a penny
+    if ($('#B40').val()) {
+        B40 = $('#B40').val();
+        console.log("Used user's CPC value");
+    } else {
+        B40 =  0.005;
+        console.log("CPC default value of $0.005 used");
+    }
+
     $('#B40').val(B40);
 
     var B42 = Number(B40) * B38; 
@@ -143,11 +151,12 @@ function calculate() {
     $('#box1-footer').show();
     $('#rightSidebar').show();
 
-    $('#DuringAnImplementation').show();
-
+    $('#served').show();
+    $('#clicks').show();
+    $('#incremental').show();
+    //$('#publisherAssumptions').hide();
+    $('#collapseWrapper').show();
     $('#collapse').show();
-
-    document.getElementById("backgroundCurrentAssumptions").className = "box box-primary collapsed-box";
 
     //submit event function returns false in order to tell browser not to reload page
     return false;
@@ -156,6 +165,10 @@ function calculate() {
 var i =0; //counter to stop scrolling to top after first submission of #main_form
 $('#main_form').submit( calculate );
 
+$('#backgroundRightLink').click(function () {
+    console.log("poop");
+    $('#publisherAssumptions').show();
+})
 
 // Hide Shit
 $(document).ready(function(){
@@ -181,7 +194,7 @@ $(document).ready(function(){
     $('#B58_CONTAINER').hide();
     $('#B59_CONTAINER').hide();
     $('#SummaryEconomicImpact').hide();
-    $('#DuringAnImplementation').hide();
+    $('#served').hide();
     $('#saveBox1').hide();
     $('#saveBox2').hide();
     $('#saveBox3').hide();
@@ -191,9 +204,12 @@ $(document).ready(function(){
     $('#saveSuccessful3').hide();
     $('#collapse').hide();
     $('#rightSidebar').hide();
-
     $('#byComparison').hide();
+    $('#collapseWrapper').hide();
 
+    $('#served').hide();
+    $('#clicks').hide();
+    $('#incremental').hide();
 
 });
 
