@@ -5,7 +5,7 @@
  *      This file should be included in the form pages
  !**/
 
- // This function performs a basic calcuation. 
+ // This script is responsible for lots of shit. 
 
 
 function percent(num){
@@ -18,14 +18,14 @@ function calculate() {
     $('companyName').val(companyName);
 
     // Retrieve value from the amount field
-
-    // Do actual calculation
-    var B14 = $('#B14').val();
+    var B14 = parseFloat($('#B14').val().replace(/,/g,'')); //turn B14 from a string w/ commas to a number 
+    console.log("poop: " +B14);
     // Store the value in the total field. Note that the 'Number' 
     // function converts a string of numbers into numbers
-    $('#B14').val( B14.toLocaleString() ); //.toFixed(2) );
+
+    $('#B14').val( B14 ); //.toFixed(2) );
     // toFixed ensures there are only two digits after the dec point
-    console.log(B14);
+
 
     var B16 = $('#B16').val();
     var B17 = B14 / percent( Number(B16) );
@@ -53,9 +53,18 @@ function calculate() {
     var B28 = $('#B28').val(); 
     $('#B28').val(B28);
 
-    var B29 = B27 * (1 + percent( Number(B28) ) );
+
+    // the following function rounds our percentage down to 2 decimal places
+    function round(num, places) {
+    var multiplier = Math.pow(10, places);
+    return Math.round(num * multiplier) / multiplier;
+    }
+
+    var B29 = round( B27 * (1 + percent( Number(B28) ) ), 2);
     $('#B27').val( B27 );
     $('#B29').val( B29) ;
+
+
     var B31 = B23 * percent( B27 );
     var B32 = B24 * percent( B29 );
 
@@ -151,24 +160,46 @@ function calculate() {
     $('#box1-footer').show();
     $('#rightSidebar').show();
 
-    $('#served').show();
-    $('#clicks').show();
-    $('#incremental').show();
-    //$('#publisherAssumptions').hide();
-    $('#collapseWrapper').show();
+    //hides the collapse button on the top right corner of each widget.
+    //$('#collapseWrapper').show();
     $('#collapse').show();
+
+    // Hides the initial form before submission 
+    $('#publisherAssumptions').hide();
+
+
+    //the following scripts fades in the various sections when a user clicks on the Reveal sidebar
+    $('#publisherAssumptionsLink').click(function() {
+         $('#publisherAssumptions').fadeIn("slow", function(){
+        });
+    });  
+
+    $('#servedLink').click(function() {
+        $('#served').fadeIn("slow", function(){
+        });
+    });  
+
+    $('#clicksLink').click(function() {
+         $('#clicks').fadeIn("slow", function(){
+        });
+    });  
+
+    $('#incrementalLink').click(function() {
+        $('#incremental').fadeIn("slow", function(){
+        });
+    });  
+
 
     //submit event function returns false in order to tell browser not to reload page
     return false;
 }
 
+
+
 var i =0; //counter to stop scrolling to top after first submission of #main_form
 $('#main_form').submit( calculate );
 
-$('#backgroundRightLink').click(function () {
-    console.log("poop");
-    $('#publisherAssumptions').show();
-})
+
 
 // Hide Shit
 $(document).ready(function(){
@@ -205,14 +236,30 @@ $(document).ready(function(){
     $('#collapse').hide();
     $('#rightSidebar').hide();
     $('#byComparison').hide();
-    $('#collapseWrapper').hide();
+    //$('#collapseWrapper').hide();
 
     $('#served').hide();
     $('#clicks').hide();
     $('#incremental').hide();
 
+
 });
 
+// inserts commas into B14, aka "Video streams that Neon could influence per month"
+// The key is to use 'onkeyup'
+function format(input)
+{
+    var nStr = input.value + '';
+    nStr = nStr.replace( /\,/g, "");
+    var x = nStr.split( '.' );
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while ( rgx.test(x1) ) {
+        x1 = x1.replace( rgx, '$1' + ',' + '$2' );
+    }
+    input.value = x1 + x2;
+}
 
 var newPushRef;
 var myDataRef;
