@@ -23,7 +23,7 @@ function calculate() {
     // Store the value in the total field. Note that the 'Number' 
     // function converts a string of numbers into numbers
 
-    $('#B14').val( B14 ); //.toFixed(2) );
+    $('#B14').val( B14.toLocaleString() ); //.toFixed(2) );
     // toFixed ensures there are only two digits after the dec point
 
 
