@@ -143,7 +143,7 @@ function calculate() {
     $('#B56_CONTAINER').show();
     $('#B58_CONTAINER').show();
     $('#B59_CONTAINER').show();
-    $('#SummaryEconomicImpact').show();
+    $('#economicSummary').show();
     $('#submit_Box3').hide(); 
     $('#saveBox1').show();
     $('#saveBox2').show();
@@ -193,7 +193,7 @@ $(document).ready(function(){
     $('#B56_CONTAINER').hide();
     $('#B58_CONTAINER').hide();
     $('#B59_CONTAINER').hide();
-    $('#SummaryEconomicImpact').hide();
+    $('#economicSummary').hide();
     $('#served').hide();
     $('#saveBox1').hide();
     $('#saveBox2').hide();
