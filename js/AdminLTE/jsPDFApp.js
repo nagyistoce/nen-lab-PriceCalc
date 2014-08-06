@@ -66,16 +66,16 @@ function demoFromHTML(){
 
 	doc.setFontSize(13);
 	doc.setFontStyle('bold');
-	doc.text(20, 70, 'Background: Current Assumptions');
+	doc.text(20, 70, 'Economic Summary');
 
 	doc.setFontStyle('normal');
 	doc.setFontSize(13);
-	doc.text(20, 80, 'Video Streams Consumed on Site/Mo');
+	doc.text(20, 80, 'Potential incremental revenue');
 	doc.setFontSize(12);
-	doc.text(20, 85, 'used be B8' );
+	doc.text(20, 85, $('#B54').val() );
 	
 	doc.setFontSize(13);
-	doc.text(20, 95, 'Via Click on On-Site Thumbs');
+	doc.text(20, 95, 'Via Click on On-Site Thumbs'); 
 	doc.setFontSize(12);
 	doc.text(20, 100, 'used to be B9');
 

@@ -165,6 +165,7 @@ function calculate() {
     $('#collapse').show();
 
     // Hides the initial form before submission 
+
     $('#publisherAssumptions').hide();
 
 
@@ -189,6 +190,12 @@ function calculate() {
         });
     });  
 
+    //this code block gets the .json file for the form just generated. remember: the values stored in the database
+    //for a particular company will get updated anytime you create a new form w/ the same company name
+    var companyName = $('#companyName').val();
+    $('#json').click(function(){
+        window.open('https://neonpricing.firebaseio.com/'+companyName+'.json','_blank');
+    });
 
     //submit event function returns false in order to tell browser not to reload page
     return false;
@@ -236,7 +243,7 @@ $(document).ready(function(){
     $('#collapse').hide();
     $('#rightSidebar').hide();
     $('#byComparison').hide();
-    //$('#collapseWrapper').hide();
+    // $('#collapseWrapper').hide();
 
     $('#served').hide();
     $('#clicks').hide();
@@ -311,7 +318,6 @@ $('#saveBox1').click(function (){
     console.log("whuu");
      pushedMyDataRef.set({
     
-
         B14: $('#B14').val(),
         B16: $('#B16').val(),
         B17: $('#B17').val(),
