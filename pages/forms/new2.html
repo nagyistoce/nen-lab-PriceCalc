@@ -122,7 +122,7 @@
                     <section class="content" id="fromHTMLtestdiv">
 
 
-                     <div class="row"> <!-- WHAT TO DO WITH THIS SHIT -->
+                       <div class="row"> <!-- WHAT TO DO WITH THIS SHIT -->
 
                         <!-- left column -->
                         <div class="col-md-8">
@@ -137,29 +137,29 @@
 
                                 <div class="box-body">
 
-                                    <div class="form-group" id="B54_CONTAINER">   
+                                    <div class="form-group">   
                                         <label>Potential incremental revenue</label>
                                         <div class="input-group">
                                             <span class="input-group-addon">$</span>
-                                            <input type="text" id="B54" disabled="disabled" class="form-control" placeholder="Same as above estimated potential incremental revenue">
+                                            <input type="text" id="potentialIncrementalRevenue" disabled="disabled" class="form-control" placeholder="Same as above estimated potential incremental revenue">
 
                                         </div> 
                                     </div>
 
-                                    <div class="form-group" id="B55_CONTAINER">   
+                                    <div class="form-group">   
                                         <label>Neon fee</label>
                                         <div class="input-group">
                                             <span class="input-group-addon">$</span>
-                                            <input type="text" id="B55" disabled="disabled" class="form-control" placeholder="Same as above Neon fee">
+                                            <input type="text" id="neonFee" disabled="disabled" class="form-control" placeholder="Same as above Neon fee">
 
                                         </div> 
                                     </div>
 
-                                    <div class="form-group" id="B56_CONTAINER">   
+                                    <div class="form-group" >   
                                         <label>Neon incremental revenue</label>
                                         <div class="input-group">
                                             <span class="input-group-addon">$</span>
-                                            <input type="text" id="B56" disabled="disabled" class="form-control" placeholder="0.00">
+                                            <input type="text" id="neonIncrementalRevenue" disabled="disabled" class="form-control" placeholder="0.00">
 
                                         </div> 
                                     </div>
@@ -196,29 +196,29 @@
                             <form id ="main_form" role="form">
                                 <div class="box-body">
 
-                                   <div class="form-group" >   
+                                 <div class="form-group" >   
                                     <label>Company</label>
                                     <input id="companyName" class="form-control" placeholder="Name">
                                 </div> 
 
-                                <div class="form-group" id="B14_CONTAINER">
+                                <div class="form-group" >
                                     <label>Video streams that Neon could influence per month</label>
                                     <p class="help-block">Total streams * onsite click % </p>
-                                    <input id="B14" type="text" onkeyup="format(this)" class="form-control" placeholder="0"/> </input>
+                                    <input id="videoStreamsNeonCouldInfluencePerMo" type="text" onkeyup="format(this)" class="form-control" placeholder="0"/> </input>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Publisher click rate</label>
                                     <div class="input-group">
-                                        <input id= "B16" type="text" placeholder = "Percentage" class="form-control">
+                                        <input id= "publisherClickRate" type="text" placeholder = "Percentage" class="form-control">
                                         <span class="input-group-addon">%</span>
                                     </div>
                                 </div>
 
-                                <div class="form-group" id= "B17_CONTAINER">
+                                <div class="form-group" id= "potentialThumbnailsNeonWouldServe_CONTAINER">
                                     <label>Potential thumbnails Neon would serve</label>
                                     <p class="help-block"> Calculated: Status Quo Thumbnail Clicks that Neon could influence / Estimated Click Rate on Default Thumbnails </p>
-                                    <input id="B17" disabled= "disabled" type="text" class="form-control" placeholder="0"/> 
+                                    <input id="potentialThumbnailsNeonWouldServe" disabled= "disabled" type="text" class="form-control" placeholder="0"/> 
                                 </div>
 
 
@@ -228,7 +228,7 @@
                                     <p class="help-block">Based on Neon estimate or Pilot tracker data</p>
 
                                     <div class="input-group">
-                                        <input id= "B28" type="text" placeholder = "0" class="form-control">
+                                        <input id= "neonLiftRate" type="text" placeholder = "0" class="form-control">
 
                                         <span class="input-group-addon">%</span>
                                     </div>
@@ -240,7 +240,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="text" id="B47" class="form-control" placeholder="0.00">
+                                        <input type="text" id="CPM" class="form-control" placeholder="0.00">
 
                                     </div> 
                                 </div>
@@ -249,7 +249,7 @@
                                     <label for="exampleInputPassword1">Sell-through rate</label>
 
                                     <div class="input-group">
-                                        <input id= "B48" type="text" placeholder = "Percentage" class="form-control">
+                                        <input id= "sellThroughRate" type="text" placeholder = "Percentage" class="form-control">
                                         <span class="input-group-addon">%</span>
                                     </div>
                                 </div>
@@ -257,7 +257,7 @@
                                 <div class="form-group" >   
                                     <label>Average pre-rolls per stream</label>
 
-                                    <input id="B49" class="form-control" placeholder="Decimal value">
+                                    <input id="avgPrerollsPerStream" class="form-control" placeholder="Decimal value">
                                 </div>
 
 
@@ -267,7 +267,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
 
-                                        <input type="text" id="B40" class="form-control" placeholder="Default value is $0.005.  Click here to change.">
+                                        <input type="text" id="CPCforIncrementalClicks" class="form-control" placeholder="Default value is $0.005.  Click here to change.">
 
 
                                     </div> 
@@ -278,13 +278,90 @@
                                 <button type="submit" id= "submit_Box3" class="btn btn-primary">Submit</button> 
 
                             </div> 
-                
-                    </div> <!--end of Publisher Assumptions section -->
+                            
+                        </div> <!--end of Publisher Assumptions section -->
 
 
-                    <div class="box box-info" id="served">
+                        <div class="box box-info" id="served">
+                            <div class="box-header">
+                                <h3 class="box-title">Served</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-default btn-sm" id="collapse" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+
+                            </div><!-- /.box-header -->
+
+                            <div class="box-body">
+
+                              <div class="form-group"> 
+
+                                <label for="exampleInputPassword1">Thumbnail views where Neon serves publisher supplied thumbnails</label>
+                                <p class="help-block">TBD in design of A/B testing</p>
+
+                                <div class="input-group">             
+                                    <input id= "thumbnailViewsWhereNeonServesPublisherSuppliedThumbnails" type="text" disabled="disabled" placeholder = "Default value 1" class="form-control">
+
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group"> 
+
+                                <label for="exampleInputPassword1">Thumbnail views where Neon serves default thumbnails</label>
+                                <p class="help-block">TBD in design of A/B testing</p>
+
+                                <div class="input-group">             
+                                    <input id= "thumbnailViewsWhereNeonServesDefaultThumbnails" type="text" disabled="disabled" placeholder = "Default value 99" class="form-control">
+
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group" >   
+                                <label>Publisher supplied thumbnail views ("A" in the A/B test)</label>
+                                <p class ="help-block">Calculated: Inferred Tracked Thumbnail Views * % Thumbnail Views where Default Thumbnail served</p>
+                                <input id="publisherSuppliedThumbnailViews" disabled="disabled" class="form-control" placeholder="0">
+                            </div> 
+
+                            <div class="form-group" >   
+                                <label>Neon thumbnail views ("B" in the A/B test)</label>
+                                <p class ="help-block">Calculated: Inferred Tracked Thumbnail Views * % Thumbnail Views where Neon Thumbnail served</p>
+                                <input id="neonThumbnailViews" disabled="disabled" class="form-control" placeholder="0">
+                            </div> 
+
+                            <div class="form-group"  >   
+                                <label>Total thumbnail views</label>
+                                <p class ="help-block">Calculated: Sum</p>
+                                <input id="totalThumbnailViews" disabled="disabled" class="form-control" placeholder="0">
+                            </div> 
+
+                            <div class="form-group" >
+                                <label for="exampleInputPassword1">Default Click Rate</label>
+                                <div class="input-group">
+                                    <input id= "defaultClickRate" type="text" disabled="disabled" placeholder = "Same as above Click Rate on Default Thumbnails" class="form-control">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+
+                            <!-- This is hidden because it's needed for calculations. If this is removed, data for the entire form will not be saved in Firebase DB -->
+                            <div class="form-group"  >
+                                <label for="exampleInputPassword1">Neon Click Rate</label>
+                                <p class="help-block">Calculated: Default Click Rate * (1 + Neon Lift Rate)</p>
+
+                                <div class="input-group">
+                                    <input id= "neonClickRate" type="text" disabled= "disabled" placeholder = "Percentage" class="form-control">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div> 
+
+                        </div>
+                    </div> <!-- ./box info -->
+                    
+                    <div class="box box-primary" id="clicks">
                         <div class="box-header">
-                            <h3 class="box-title">Served</h3>
+                            <h3 class="box-title">Clicks</h3>
                             <div class="box-tools pull-right">
                                 <button class="btn btn-default btn-sm" id="collapse" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                             </div>
@@ -292,150 +369,73 @@
                         </div><!-- /.box-header -->
 
                         <div class="box-body">
-
-                          <div class="form-group"> 
-
-                            <label for="exampleInputPassword1">Thumbnail views where Neon serves publisher supplied thumbnails</label>
-                            <p class="help-block">TBD in design of A/B testing</p>
-
-                            <div class="input-group">             
-                                <input id= "B20" type="text" disabled="disabled" placeholder = "Default value 1" class="form-control">
-
-                                <span class="input-group-addon">%</span>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group"> 
-
-                            <label for="exampleInputPassword1">Thumbnail views where Neon serves default thumbnails</label>
-                            <p class="help-block">TBD in design of A/B testing</p>
-
-                            <div class="input-group">             
-                                <input id= "B21" type="text" disabled="disabled" placeholder = "Default value 99" class="form-control">
-
-                                <span class="input-group-addon">%</span>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group" id="B23_CONTAINER" >   
-                            <label>Publisher supplied thumbnail views ("A" in the A/B test)</label>
-                            <p class ="help-block">Calculated: Inferred Tracked Thumbnail Views * % Thumbnail Views where Default Thumbnail served</p>
-                            <input id="B23" disabled="disabled" class="form-control" placeholder="0">
-                        </div> 
-
-                        <div class="form-group" id="B24_CONTAINER">   
-                            <label>Neon thumbnail views ("B" in the A/B test)</label>
-                            <p class ="help-block">Calculated: Inferred Tracked Thumbnail Views * % Thumbnail Views where Neon Thumbnail served</p>
-                            <input id="B24" disabled="disabled" class="form-control" placeholder="0">
-                        </div> 
-
-                        <div class="form-group" id="B25_CONTAINER" >   
-                            <label>Total thumbnail views</label>
-                            <p class ="help-block">Calculated: Sum</p>
-                            <input id="B25" disabled="disabled" class="form-control" placeholder="0">
-                        </div> 
-
-                        <div class="form-group" id="B27_CONTAINER">
-                            <label for="exampleInputPassword1">Default Click Rate</label>
-                            <div class="input-group">
-                                <input id= "B27" type="text" disabled="disabled" placeholder = "Same as above Click Rate on Default Thumbnails" class="form-control">
-                                <span class="input-group-addon">%</span>
-                            </div>
-                        </div>
-
-                        <!-- This is hidden because it's needed for calculations. If this is removed, data for the entire form will not be saved in Firebase DB -->
-                        <div class="form-group" id="B29_CONTAINER">
-                            <label for="exampleInputPassword1">Neon Click Rate</label>
-                            <p class="help-block">Calculated: Default Click Rate * (1 + Neon Lift Rate)</p>
-
-                            <div class="input-group">
-                                <input id= "B29" type="text" disabled= "disabled" placeholder = "Percentage" class="form-control">
-                                <span class="input-group-addon">%</span>
-                            </div>
-                        </div> 
-
-                    </div>
-                </div> <!-- ./box info -->
-                
-                <div class="box box-primary" id="clicks">
-                    <div class="box-header">
-                        <h3 class="box-title">Clicks</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-default btn-sm" id="collapse" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-
-                    </div><!-- /.box-header -->
-
-                    <div class="box-body">
-                        <div class="form-group" id="B31_CONTAINER" >   
-                            <label>Publisher views * publisher click rate</label>
-                        
-                            <input id="B31" disabled="disabled" class="form-control" placeholder="0">
-                        </div> 
-
-
-                        <div class="form-group" id="B32_CONTAINER">   
-                            <label>Neon views * Neon click rate</label>
-                    
-                            <input id="B32" disabled="disabled" class="form-control" placeholder="0">
-                        </div>
-
-                        <div class="form-group" id="B34_CONTAINER">   
-                            <label>Without Neon</label>
-                            <p class="help-block"> Calculated: Total Tracked Thumbnail Views * Default Click Rate</p>
-                            <input id="B34" disabled="disabled" class="form-control" placeholder="0">
-                        </div>
-
-                        <div class="form-group" id="B35_CONTAINER" >   
-                            <label>With Neon</label>
-                            <p class="help-block"> Calculated: Total Tracked Thumbnail Views * Neon Click Rate</p>
-                            <input id="B35" disabled="disabled" class="form-control" placeholder="0">
-                        </div>
-                    </div>
-
-                </div> <!-- end of Clicks box -->
-
-
-                <div class="box box-info" id="incremental">
-                    <div class="box-header">
-                        <h3 class="box-title">Incremental</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-default btn-sm" id="collapse" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-
-                    </div><!-- /.box-header -->
-
-                    <div class="box-body">
-                        <div class="form-group" id="B37_CONTAINER">   
-                            <label>Net new clicks on 99% of traffic</label>
-                            <p class="help-block"> Calculated: Inferred Neon Clicks - Inferred Default Clicks</p>
-                            <input id="B37" disabled="disabled" class="form-control" placeholder="0">
-                        </div>
-
-                        <div class="form-group" id="B38_CONTAINER">   
-                            <label>Actual Incremental Clicks</label>
-                            <p class="help-block"> Calculated: Tracked Neon Clicks - (Inferred Default Clicks - Tracked Default Clicks) </p>
-                            <input id="B38" disabled="disabled" class="form-control" placeholder="0">
-                        </div>
-
-
-                        <!-- should be hidden but needed for firebase -->
-                        <div class="form-group" id="B42_CONTAINER" >   
-                            <label>Neon Fee per Month</label>
-                            <p class="help-block"> Calculated: Actual Incremental Clicks * CPC </p> 
-                            <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <input type="text" id="B42" disabled="disabled" class="form-control" placeholder="0.00">
-
+                            <div class="form-group">
+                                <label>Publisher views * publisher click rate</label>
+                                
+                                <input id="publisherViewsxpublisherClickRate" disabled="disabled" class="form-control" placeholder="0">
                             </div> 
 
+
+                            <div class="form-group" >  
+                                <label>Neon views * Neon click rate</label>
+                                
+                                <input id="neonViewsxNeonClickRate" disabled="disabled" class="form-control" placeholder="0">
+                            </div>
+
+                            <div class="form-group" >  
+                                <label>Without Neon</label>
+                                <p class="help-block"> Calculated: Total Tracked Thumbnail Views * Default Click Rate</p>
+                                <input id="withoutNeon" disabled="disabled" class="form-control" placeholder="0">
+                            </div>
+
+                            <div class="form-group" >
+                                <label>With Neon</label>
+                                <p class="help-block"> Calculated: Total Tracked Thumbnail Views * Neon Click Rate</p>
+                                <input id="withNeon" disabled="disabled" class="form-control" placeholder="0">
+                            </div>
                         </div>
 
-                    </div> <!-- /.box-body -->
-                </div> <!-- end of Incremental section -->
-            </div> <!-- closes md 8 column preference so that Reveal can sit at the right -->
+                    </div> <!-- end of Clicks box -->
+
+
+                    <div class="box box-info" id="incremental">
+                        <div class="box-header">
+                            <h3 class="box-title">Incremental</h3>
+                            <div class="box-tools pull-right">
+                                <button class="btn btn-default btn-sm" id="collapse" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                            </div>
+
+                        </div><!-- /.box-header -->
+
+                        <div class="box-body">
+                            <div class="form-group" >
+                                <label>Net new clicks on 99% of traffic</label>
+                                <p class="help-block"> Calculated: Inferred Neon Clicks - Inferred Default Clicks</p>
+                                <input id="netNewClicksOn99Traffic" disabled="disabled" class="form-control" placeholder="0">
+                            </div>
+
+                            <div class="form-group" >
+                                <label>Actual Incremental Clicks</label>
+                                <p class="help-block"> Calculated: Tracked Neon Clicks - (Inferred Default Clicks - Tracked Default Clicks) </p>
+                                <input id="actualIncrementalClicks" disabled="disabled" class="form-control" placeholder="0">
+                            </div>
+
+
+                            <!-- should be hidden but needed for firebase -->
+                            <div class="form-group" > 
+                                <label>Neon Fee per Month</label>
+                                <p class="help-block"> Calculated: Actual Incremental Clicks * CPC </p> 
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text" id="neonFeePerMo" disabled="disabled" class="form-control" placeholder="0.00">
+
+                                </div> 
+
+                            </div>
+
+                        </div> <!-- /.box-body -->
+                    </div> <!-- end of Incremental section -->
+                </div> <!-- closes md 8 column preference so that Reveal can sit at the right -->
 
                 <!-- This section, by comparison, is never shown. It's hidden because its values are needed for the calculations to work. Do not remove.-->
                 <div class="box box-primary" id="byComparison">
@@ -450,10 +450,10 @@
 
                     <div class="box-body">
 
-                        <div class="form-group" id="B46_CONTAINER">   
+                        <div class="form-group" >
                             <label>Actual Incremental Clicks</label>
 
-                            <input id="B46" disabled="disabled" class="form-control" placeholder="Same as above Actual Incremental Clicks">
+                            <input id="actualIncrementalClicks" disabled="disabled" class="form-control" placeholder="Same as above Actual Incremental Clicks">
                         </div>
 
 
@@ -462,7 +462,7 @@
                             <p class="help-block"> Est </p> 
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="text" id="B47" class="form-control" placeholder="0.00">
+                                <input type="text" id="CPM" class="form-control" placeholder="0.00">
 
                             </div> 
                         </div>
@@ -471,7 +471,7 @@
                             <label for="exampleInputPassword1">Sell-through rate</label>
                             <p class="help-block"> Est </p> 
                             <div class="input-group">
-                                <input id= "B48" type="text" placeholder = "Percentage" class="form-control">
+                                <input id= "sellThroughRate" type="text" placeholder = "Percentage" class="form-control">
                                 <span class="input-group-addon">%</span>
                             </div>
                         </div>
@@ -479,34 +479,34 @@
                         <div class="form-group" >   
                             <label>Ad:content ratio</label>
                             <p class="help-block"> Note: Depends on the client's interface. Also note that this may be higher based on our inclusion of the category above of "via autoplay attributed to a thumb" </p>
-                            <input id="B49" class="form-control" placeholder="0">
+                            <input id="avgPrerollsPerStream" class="form-control" placeholder="0">
                         </div>
 
 
-                        <div class="form-group" id="B50_CONTAINER">   
+                        <div class="form-group" >
                             <label>Estimated potential incremental revenue</label>
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="text" disabled="disabled" id="B50" class="form-control" placeholder="0.00">
+                                <input type="text" disabled="disabled" id="estimatedPotentialIncrementalRevenue" class="form-control" placeholder="0.00">
 
                             </div> 
                         </div>
 
 
                         <!-- should be in Economic Summary but moved to other section bc I need it on the form somewhere for Firebase to work --> 
-                        <div class="form-group" id="B58_CONTAINER">
+                        <div class="form-group" >
                             <label for="exampleInputPassword1">% of Est. potential incremental revenue going to Neon</label>
                             <div class="input-group">
-                                <input id= "B58" type="text" disabled="disabled" placeholder = "Percentage" class="form-control">
+                                <input id= "percentEstimatedPotentialRevenueforNeon" type="text" disabled="disabled" placeholder = "Percentage" class="form-control">
                                 <span class="input-group-addon">%</span>
                             </div>
                         </div>
 
                         <!-- should be hidden but needed for firebase --> 
-                        <div class="form-group" id="B59_CONTAINER">
+                        <div class="form-group" >
                             <label for="exampleInputPassword1">% of Est. potential incremental revenue going to Customer</label>
                             <div class="input-group">
-                                <input id= "B59" type="text" disabled="disabled" placeholder = "Percentage" class="form-control">
+                                <input id= "percentEstimatedPotentialRevenueforCustomer" type="text" disabled="disabled" placeholder = "Percentage" class="form-control">
                                 <span class="input-group-addon">%</span>
                             </div>
                         </div> 
@@ -516,8 +516,8 @@
 
                 <!-- right column Reveal is HERE -->
                 <div class="col-md-4"  >
-                   <!--general form elements disabled -->
-                   <div class="box box-warning" id="rightSidebar">
+                 <!--general form elements disabled -->
+                 <div class="box box-warning" id="rightSidebar">
                     <div class="box-header">
                         <h3 class="box-title">Reveal</h3>
                     </div><!-- /.box-header -->

@@ -9,7 +9,7 @@
 
 
 
-function percent(num){
+ function percent(num){
     return num/100;
 }
 
@@ -19,110 +19,109 @@ function calculate() {
     $('companyName').val(companyName);
 
     // Retrieve value from the amount field using .val()
-    //turn B14 from a string w/ commas to a number that can be calculated bc a string can't be calculated
-    var B14 = parseFloat($('#B14').val().replace(/,/g,'')); 
+    //turn videoStreamsNeonCouldInfluencePerMo from a string w/ commas to a number that can be calculated bc a string can't be calculated
+    var videoStreamsNeonCouldInfluencePerMo = parseFloat($('#videoStreamsNeonCouldInfluencePerMo').val().replace(/,/g,'')); 
     // toLocaleString() puts commas into long numbers to improve readability
-    $('#B14').val( B14.toLocaleString() ); 
+    $('#videoStreamsNeonCouldInfluencePerMo').val( videoStreamsNeonCouldInfluencePerMo.toLocaleString() ); 
 
-    var B16 = $('#B16').val();
+    var publisherClickRate = $('#publisherClickRate').val();
 
     //Number() function converts a string of numbers into numbers
-    var B17 = B14 / percent( Number(B16) );
-    $('#B17').val( B17.toLocaleString() );
+    var potentialThumbnailsNeonWouldServe = videoStreamsNeonCouldInfluencePerMo / percent( Number(publisherClickRate) );
+    $('#potentialThumbnailsNeonWouldServe').val( potentialThumbnailsNeonWouldServe.toLocaleString() );
 
 
-    var B20= 1;
-    $('#B20').val(B20);
-    var B21 = 99;
-    $('#B21').val(B21);
+    var thumbnailViewsWhereNeonServesPublisherSuppliedThumbnails= 1;
+    $('#thumbnailViewsWhereNeonServesPublisherSuppliedThumbnails').val(thumbnailViewsWhereNeonServesPublisherSuppliedThumbnails);
+    var thumbnailViewsWhereNeonServesDefaultThumbnails = 99;
+    $('#thumbnailViewsWhereNeonServesDefaultThumbnails').val(thumbnailViewsWhereNeonServesDefaultThumbnails);
 
 
-    var B23 = B17 * percent( Number(B20) );
-    var B24 = B17 * percent( Number(B21) );
-    var B25 = B23 + B24;
+    var publisherSuppliedThumbnailViews = potentialThumbnailsNeonWouldServe * percent( Number(thumbnailViewsWhereNeonServesPublisherSuppliedThumbnails) );
+    var neonThumbnailViews = potentialThumbnailsNeonWouldServe * percent( Number(thumbnailViewsWhereNeonServesDefaultThumbnails) );
+    var totalThumbnailViews = publisherSuppliedThumbnailViews + neonThumbnailViews;
 
-    $('#B23').val( B23.toLocaleString() );
-    $('#B24').val( B24.toLocaleString() );
-    $('#B25').val( B25.toLocaleString() );
+    $('#publisherSuppliedThumbnailViews').val( publisherSuppliedThumbnailViews.toLocaleString() );
+    $('#neonThumbnailViews').val( neonThumbnailViews.toLocaleString() );
+    $('#totalThumbnailViews').val( totalThumbnailViews.toLocaleString() );
 
-    var B27 = B16;
+    var defaultClickRate = publisherClickRate;
 
-    var B28 = $('#B28').val(); 
-    $('#B28').val(B28);
+    var neonLiftRate = $('#neonLiftRate').val(); 
+    $('#neonLiftRate').val(neonLiftRate);
 
 
     // round() rounds our percentage down to 2 decimal places
     function round(num, places) {
-    var multiplier = Math.pow(10, places);
-    return Math.round(num * multiplier) / multiplier;
+        var multiplier = Math.pow(10, places);
+        return Math.round(num * multiplier) / multiplier;
     }
 
-    var B29 = round( B27 * (1 + percent( Number(B28) ) ), 2);
-    $('#B27').val( B27 );
-    $('#B29').val( B29) ;
+    var neonClickRate = round( defaultClickRate * (1 + percent( Number(neonLiftRate) ) ), 2);
+    $('#defaultClickRate').val( defaultClickRate );
+    $('#neonClickRate').val( neonClickRate) ;
 
 
-    var B31 = B23 * percent( B27 );
-    var B32 = B24 * percent( B29 );
+    var publisherViewsxpublisherClickRate = publisherSuppliedThumbnailViews * percent( defaultClickRate );
+    var neonViewsxNeonClickRate = neonThumbnailViews * percent( neonClickRate );
 
-    $('#B31').val( B31.toLocaleString() );
-    $('#B32').val( B32.toLocaleString() );
+    $('#publisherViewsxpublisherClickRate').val( publisherViewsxpublisherClickRate.toLocaleString() );
+    $('#neonViewsxNeonClickRate').val( neonViewsxNeonClickRate.toLocaleString() );
 
-    var B34 = B25 * percent( B27 );
-    var B35 = B25 * percent( B29 );
+    var withoutNeon = totalThumbnailViews * percent( defaultClickRate );
+    var withNeon = totalThumbnailViews * percent( neonClickRate );
 
-    $('#B34').val( B34.toLocaleString() );
-    $('#B35').val( B35.toLocaleString() );
+    $('#withoutNeon').val( withoutNeon.toLocaleString() );
+    $('#withNeon').val( withNeon.toLocaleString() );
 
-    var B37 = B35 - B34;
-    var B38 = B32 - (B34 - B31);
+    var netNewClicksOn99Traffic = withNeon - withoutNeon;
+    var actualIncrementalClicks = neonViewsxNeonClickRate - (withoutNeon - publisherViewsxpublisherClickRate);
 
-    $('#B37').val( B37.toLocaleString() );
-    $('#B38').val( B38.toLocaleString() );
+    $('#netNewClicksOn99Traffic').val( netNewClicksOn99Traffic.toLocaleString() );
+    $('#actualIncrementalClicks').val( actualIncrementalClicks.toLocaleString() );
 
 
     //if user inputs a CPC value, use that value in the calculation. else, use default value of half a penny
-    if ($('#B40').val()) {
-        B40 = $('#B40').val();
+    if ($('#CPCforIncrementalClicks').val()) {
+        CPCforIncrementalClicks = $('#CPCforIncrementalClicks').val();
         console.log("Used user's CPC value");
     } else {
-        B40 =  0.005;
+        CPCforIncrementalClicks =  0.005;
         console.log("CPC default value of $0.005 used");
     }
 
-    $('#B40').val(B40);
+    $('#CPCforIncrementalClicks').val(CPCforIncrementalClicks);
 
-    var B42 = Number(B40) * B38; 
-    $('#B42').val( B42.toLocaleString() );
+    var neonFeePerMo = Number(CPCforIncrementalClicks) * actualIncrementalClicks; 
+    $('#neonFeePerMo').val( neonFeePerMo.toLocaleString() );
 
-    var B46 = B38
-    var B47 = $('#B47').val();
-    var B48 = $('#B48').val();
-    var B49 = $('#B49').val();
-    var B50 = (B46 * Number(B47) / 1000 * percent( Number(B48) ) *  Number(B49) ).toLocaleString();
-    $('#B46').val( B46.toLocaleString() );
-    $('#B50').val( B50.toLocaleString() );
+    var actualIncrementalClicks = actualIncrementalClicks
+    var CPM = $('#CPM').val();
+    var sellThroughRate = $('#sellThroughRate').val();
+    var avgPrerollsPerStream = $('#avgPrerollsPerStream').val();
+    var estimatedPotentialIncrementalRevenue = (actualIncrementalClicks * Number(CPM) / 1000 * percent( Number(sellThroughRate) ) *  Number(avgPrerollsPerStream) ).toLocaleString();
+    $('#actualIncrementalClicks').val( actualIncrementalClicks.toLocaleString() );
+    $('#estimatedPotentialIncrementalRevenue').val( estimatedPotentialIncrementalRevenue.toLocaleString() );
 
-    var B54 = parseFloat(B50.replace(/,/g,'')); //turn B50 from a string to a number
-    var B55 = B42;
+    var potentialIncrementalRevenue = parseFloat(estimatedPotentialIncrementalRevenue.replace(/,/g,'')); //turn estimatedPotentialIncrementalRevenue from a string to a number
+    var neonFee = neonFeePerMo;
 
-    var B56 = B54 - B55;
+    var neonIncrementalRevenue = potentialIncrementalRevenue - neonFee;
 
-    var B58 = (B55/B54) * 100; 
+    var percentEstimatedPotentialRevenueforNeon = (neonFee/potentialIncrementalRevenue) * 100; 
 
-    var B59 = (B56/B54) * 100;
+    var percentEstimatedPotentialRevenueforCustomer = (neonIncrementalRevenue/potentialIncrementalRevenue) * 100;
 
-    $('#B54').val( B54.toLocaleString() );
-    $('#B55').val( B55.toLocaleString() );
-    $('#B56').val( B56.toLocaleString() );
-    $('#B58').val(B58);
-    $('#B59').val(B59);
+    $('#potentialIncrementalRevenue').val( potentialIncrementalRevenue.toLocaleString() );
+    $('#neonFee').val( neonFee.toLocaleString() );
+    $('#neonIncrementalRevenue').val( neonIncrementalRevenue.toLocaleString() );
+    $('#percentEstimatedPotentialRevenueforNeon').val(percentEstimatedPotentialRevenueforNeon);
+    $('#percentEstimatedPotentialRevenueforCustomer').val(percentEstimatedPotentialRevenueforCustomer);
 
     //Unide form values after submission
     $('#economicSummary').show();
     $('#submit_Box3').hide(); 
-
-    $('#box1-footer').show();
+    
     $('#rightSidebar').show();
 
     //hides the collapse button on the top right corner of each widget.
@@ -134,9 +133,9 @@ function calculate() {
 
     //the following scripts fades in the various sections when a user clicks on the Reveal sidebar
     $('#publisherAssumptionsLink').click(function() {
-         $('#publisherAssumptions').fadeIn("slow", function(){
-        });
-    });  
+     $('#publisherAssumptions').fadeIn("slow", function(){
+     });
+ });  
 
     $('#servedLink').click(function() {
         $('#served').fadeIn("slow", function(){
@@ -144,9 +143,9 @@ function calculate() {
     });  
 
     $('#clicksLink').click(function() {
-         $('#clicks').fadeIn("slow", function(){
-        });
-    });  
+     $('#clicks').fadeIn("slow", function(){
+     });
+ });  
 
     $('#incrementalLink').click(function() {
         $('#incremental').fadeIn("slow", function(){
@@ -172,7 +171,7 @@ $('#main_form').submit( calculate );
 // This function hides all the parts of the form we don't want to see before the user submits
 $(document).ready(function(){
 
-    $("#B17_CONTAINER").hide();
+    $("#potentialThumbnailsNeonWouldServe_CONTAINER").hide();
     $('#economicSummary').hide();
     $('#served').hide();
     $('#collapse').hide();
@@ -186,7 +185,7 @@ $(document).ready(function(){
 
 });
 
-// format () inserts commas into B14(Video streams that Neon could influence per month)
+// format () inserts commas into videoStreamsNeonCouldInfluencePerMo(Video streams that Neon could influence per month)
 // The key is to use 'onkeyup'
 function format(input)
 {
@@ -218,35 +217,37 @@ $('#main_form').submit(function () {
 
     //The following lines save all the form information underneath 'data'. File structure: 'companyName' > 'data' > values
 
-    //Each B14, B16, is a variable that matches the row/column in Jay's original excel sheet (v140620)
+    //Each videoStreamsNeonCouldInfluencePerMo, publisherClickRate, is a variable that matches the row/column in Jay's original excel sheet (v140620)
     
     companyRef = myDataRef.child("data");
     companyRef.set({
-    companyName: $('#companyName').val(),
-    B14: $('#B14').val(),
-    B16: $('#B16').val(),
-    B17: $('#B17').val(),
-    B20: 1, //Default value
-    B21: 99, //Default value
-    B23: $('#B23').val(),
-    B24: $('#B24').val(),
-    B25: $('#B25').val(),
-    B27: $('#B27').val(),
-    B29: $('#B29').val(),
-    B31: $('#B31').val(),
-    B32: $('#B32').val(),
-    B34: $('#B34').val(),
-    B35: $('#B35').val(),
-    B37: $('#B37').val(),
-    B38: $('#B38').val(),
-    B42: $('#B42').val(),
-    B46: $('#B46').val(),
-    B50: $('#B50').val(),
-    B54: $('#B54').val(),
-    B55: $('#B55').val(),
-    B56: $('#B56').val(),
-    B58: $('#B58').val(),
-    B59: $('#B59').val(),
-    });    
+        
+        companyName: $('#companyName').val(),
+        videoStreamsNeonCouldInfluencePerMo: $('#videoStreamsNeonCouldInfluencePerMo').val(),
+        publisherClickRate: $('#publisherClickRate').val(),
+        potentialThumbnailsNeonWouldServe: $('#potentialThumbnailsNeonWouldServe').val(),
+
+    thumbnailViewsWhereNeonServesPublisherSuppliedThumbnails: 1, //Default value
+    thumbnailViewsWhereNeonServesDefaultThumbnails: 99, //Default value
+    publisherSuppliedThumbnailViews: $('#publisherSuppliedThumbnailViews').val(),
+    neonThumbnailViews: $('#neonThumbnailViews').val(),
+    totalThumbnailViews: $('#totalThumbnailViews').val(),
+    defaultClickRate: $('#defaultClickRate').val(),
+    neonClickRate: $('#neonClickRate').val(),
+    publisherViewsxpublisherClickRate: $('#publisherViewsxpublisherClickRate').val(),
+    neonViewsxNeonClickRate: $('#neonViewsxNeonClickRate').val(),
+    withoutNeon: $('#withoutNeon').val(),
+    withNeon: $('#withNeon').val(),
+    netNewClicksOn99Traffic: $('#netNewClicksOn99Traffic').val(),
+    actualIncrementalClicks: $('#actualIncrementalClicks').val(),
+    neonFeePerMo: $('#neonFeePerMo').val(),
+    actualIncrementalClicks: $('#actualIncrementalClicks').val(),
+    estimatedPotentialIncrementalRevenue: $('#estimatedPotentialIncrementalRevenue').val(),
+    potentialIncrementalRevenue: $('#potentialIncrementalRevenue').val(),
+    neonFee: $('#neonFee').val(),
+    neonIncrementalRevenue: $('#neonIncrementalRevenue').val(),
+    percentEstimatedPotentialRevenueforNeon: $('#percentEstimatedPotentialRevenueforNeon').val(),
+    percentEstimatedPotentialRevenueforCustomer: $('#percentEstimatedPotentialRevenueforCustomer').val(),
+});    
 
 })

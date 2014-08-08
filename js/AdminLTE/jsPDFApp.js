@@ -74,17 +74,17 @@ function demoFromHTML(){
 	doc.setFontSize(13);
 	doc.text(20, 80, 'Potential incremental revenue');
 	doc.setFontSize(12);
-	doc.text(20, 85, '$'+ $('#B54').val() );
+	doc.text(20, 85, '$'+ $('#potentialIncrementalRevenue').val() );
 	
 	doc.setFontSize(13);
 	doc.text(20, 95, 'Neon fee'); 
 	doc.setFontSize(12);
-	doc.text(20, 100, '$'+ $('#B55').val() );
+	doc.text(20, 100, '$'+ $('#neonFee').val() );
 
 	doc.setFontSize(13);
 	doc.text(20, 110, 'Neon incremental revenue');
 	doc.setFontSize(12);
-	doc.text(20, 115, '$'+ $('#B56').val() );
+	doc.text(20, 115, '$'+ $('#neonIncrementalRevenue').val() );
 
 
 	doc.setFontSize(8);
@@ -100,37 +100,37 @@ function demoFromHTML(){
 	doc.setFontStyle('normal');
 	doc.text(20, 35, 'Video streams that Neon could influence per month');
 	doc.setFontSize(12);
-	doc.text(20, 40, $('#B14').val() );
+	doc.text(20, 40, $('#videoStreamsNeonCouldInfluencePerMo').val() );
 
 	doc.setFontSize(13);
 	doc.text(20, 50, 'Publisher click rate');
 	doc.setFontSize(12);
-	doc.text(20, 55, $('#B16').val() + '%');
+	doc.text(20, 55, $('#publisherClickRate').val() + '%');
 
 	doc.setFontSize(13);
 	doc.text(20, 65, 'Neon Lift Rate');
 	doc.setFontSize(12);
-	doc.text(20, 70, $('#B28').val() + '%');
+	doc.text(20, 70, $('#neonLiftRate').val() + '%');
 
 	doc.setFontSize(13);
 	doc.text(20, 80, 'CPM');
 	doc.setFontSize(12);
-	doc.text(20, 85, '$'+ $('#B47').val() );
+	doc.text(20, 85, '$'+ $('#CPM').val() );
 
 	doc.setFontSize(13);
 	doc.text(20, 95, 'Sell-through rate');
 	doc.setFontSize(12);
-	doc.text(20, 100, $('#B48').val() + '%' );
+	doc.text(20, 100, $('#sellThroughRate').val() + '%' );
 
 	doc.setFontSize(13);
 	doc.text(20, 110, 'Average pre-rolls per stream');
 	doc.setFontSize(12);
-	doc.text(20, 115, $('#B49').val() );
+	doc.text(20, 115, $('#avgPrerollsPerStream').val() );
 
 	doc.setFontSize(13);
 	doc.text(20, 125, "CPC for Incremental Clicks");
 	doc.setFontSize(12);
-	doc.text(20,130, '$'+ $('#B40').val() );
+	doc.text(20,130, '$'+ $('#CPCforIncrementalClicks').val() );
 
 	doc.setFontSize(13);
 	doc.setFontStyle('bold');
@@ -140,28 +140,28 @@ function demoFromHTML(){
 	doc.setFontStyle('normal');
 	doc.text(20, 150, 'Thumbnail views where Neon serves: publisher supplied thumbnails | Neon thumbnails');
 	doc.setFontSize(12);
-	doc.text(20, 155, $('#B20').val()+"% | "+ $('#B21').val() ) +'%';
+	doc.text(20, 155, $('#thumbnailViewsWhereNeonServesPublisherSuppliedThumbnails').val()+"% | "+ $('#thumbnailViewsWhereNeonServesDefaultThumbnails').val() ) +'%';
 
 	doc.setFontSize(12);
 	doc.text(20, 165, 'Publisher supplied thumbnail views ("A" in the A/B test) | Neon supplied ("B" in the A/B test)');
 	doc.setFontSize(12);
-	doc.text(20, 170, $('#B23').val() + " | " + $('#B24').val() );
+	doc.text(20, 170, $('#publisherSuppliedThumbnailViews').val() + " | " + $('#neonThumbnailViews').val() );
 
 	doc.setFontSize(13);
 	doc.text(20, 180, 'Total thumbnail views');
 	doc.setFontSize(12);
-	doc.text(20, 185, $('#B25').val() );
+	doc.text(20, 185, $('#totalThumbnailViews').val() );
 
 	doc.setFontSize(13);
 	doc.text(20, 195, "Default Click Rate");
 	doc.setFontSize(12);
-	doc.text(20, 200, $('#B27').val() + '%');
+	doc.text(20, 200, $('#defaultClickRate').val() + '%');
 
 	doc.setFontSize(13);
 	doc.setFontStyle('normal');
 	doc.text(20, 210, 'Neon Lift Rate | Neon Click Rate');
 	doc.setFontSize(12);
-	doc.text(20, 215, $('#B28').val() + '% | ' + $('#B29').val() + '%' );
+	doc.text(20, 215, $('#neonLiftRate').val() + '% | ' + $('#neonClickRate').val() + '%' );
 
 	doc.setFontSize(13);
 	doc.setFontStyle('bold');
@@ -171,18 +171,18 @@ function demoFromHTML(){
 	doc.setFontStyle('normal');
 	doc.text(20, 235, 'Publisher views * publisher click rate');
 	doc.setFontSize(12);
-	doc.text(20, 240, $('#B31').val() );
+	doc.text(20, 240, $('#publisherViewsxpublisherClickRate').val() );
 
 	doc.setFontSize(13);
 	doc.text(20, 250, 'Neon views * Neon click rate');
 	doc.setFontSize(12);
-	doc.text(20, 255, $('#B32').val() );
+	doc.text(20, 255, $('#neonViewsxNeonClickRate').val() );
 
 	doc.setFontSize(13);
 	doc.setFontStyle('normal');
 	doc.text(20, 265, 'Without Neon');
 	doc.setFontSize(12);
-	doc.text(20, 270, $('#B34').val() );
+	doc.text(20, 270, $('#withoutNeon').val() );
 
 	doc.setFontSize(8);
 	doc.text(170, 285, '1/2 Implementation Details');
@@ -198,7 +198,7 @@ function demoFromHTML(){
 	doc.setFontStyle('normal');
 	doc.text(20, 35, 'With Neon');
 	doc.setFontSize(12);
-	doc.text(20, 40, $('#B35').val() );
+	doc.text(20, 40, $('#withNeon').val() );
 
 	doc.setFontSize(13);
 	doc.setFontStyle('bold');
@@ -209,17 +209,17 @@ function demoFromHTML(){
 	doc.setFontStyle('normal');
 	doc.text(20, 60, 'Net new clicks on 99% of traffic');
 	doc.setFontSize(12);
-	doc.text(20, 65, $('#B37').val() );
+	doc.text(20, 65, $('#netNewClicksOn99Traffic').val() );
 
 	doc.setFontSize(13);
 	doc.text(20, 75, 'Actual Incremental Clicks');
 	doc.setFontSize(12);
-	doc.text(20, 80, $('#B38').val() );
+	doc.text(20, 80, $('#actualIncrementalClicks').val() );
 
 	doc.setFontSize(13);
 	doc.text(20, 90, 'Neon Fee per Month');
 	doc.setFontSize(12);
-	doc.text(20, 95, '$'+ $('#B42').val() );
+	doc.text(20, 95, '$'+ $('#neonFeePerMo').val() );
 
 	//small font and large XY values for page footer
 	doc.setFontSize(8);
