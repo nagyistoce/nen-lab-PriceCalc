@@ -1,7 +1,7 @@
 
 ------------------------
 
- Based on **Bootstrap 3** framework. Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops. C
+ Based on **Bootstrap 3** framework. Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops. 
 
 Special Features:
 -----------------
@@ -11,42 +11,7 @@ Special Features:
 - **18 plugins and 3 custom plugins**
 - **Light weight and fast**
 - **Compatible with most major browsers**
-- **Full support for Glyphicons, Fontawesome and Ion icons**
 
-Featured Pages:
-----------------
-- Dashboard
-- Mailbox
-- Calendar
-- Invoice
-- Lockscreen
-- Login
-- Register
-- 404 Error
-- 500 Error
-- Blank page
-
-Featured Plugins:
------------------
-- Boostrap Slider
-- Ion slider
-- Bootstrap WYSIHTML5
-- CKEditor
-- Bootstrap Colorpicker
-- Bootstrap Date range Picker
-- Bootstrap Time Picker
-- Data Tables
-- Flot
-- Morris.js
-- Sparkilne
-- Full Calendar
-- iCheck
-- jQuery input mask
-- jQuery Knob
-- jVector Map
-- Slim Scroll
-- Pace
-- [Bootstrap Social Buttons](http://lipis.github.io/bootstrap-social/ "Bootstrap Social")
 
 Browser Support:
 ----------------
@@ -56,30 +21,23 @@ Browser Support:
 - Safari 5+
 - Opera 11+
 
-Change log:
------------
-ver 1.2:
-- Fixed the sidebar scroll issue when using the fixed layout.
-- Added [Bootstrap Social Buttons](http://lipis.github.io/bootstrap-social/ "Bootstrap Social") plugin.
-- Fixed RequireJS bug. Thanks to [StaticSphere](https://github.com/StaticSphere "github user"). 
+To Use:
+-------
+All the html and css is AdminLTE-master/pages/forms/new2.html
 
-ver 1.1:
-- Added new skin. class: .skin-black
-- Added [pace](http://github.hubspot.com/pace/docs/welcome/ "pace") plugin.
+The necessary JS files are in AdminLTE-master/js/AdminLTE/calc3.js and AdminLTE-mater/js/AdminLTE/jsPDFApp.js
+
 
 To Do List:
 -----------
-- More features
-- Ajax version
-- More skins
-- Documentation
+- Log in system
+- Show history of past forms madde
+- Generated HTML page instead of PDF
 
-Image Credits:
+Credits:
 --------------
-[pixeden](http://www.pixeden.com/psd-web-elements/flat-responsive-showcase-psd "")
+[Almaseed Studios](http://almsaeedstudio.com/AdminLTE/ "")
 
-[graphicsfuel](http://www.graphicsfuel.com/2013/02/13-high-resolution-blur-backgrounds/ "")
+[firebase](https://neonpricing.firebaseio.com/ "")
 
-[ajaxload](http://www.ajaxload.info/ "")
-
-[pickaface](http://pickaface.net/ "")
+[brace io](http://admin.neon.brace.io/pages/forms/new2.html/ "")

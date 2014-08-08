@@ -1,11 +1,12 @@
  /*!
  * Author: Jasmine Lee
- * Date: Jul 9 2014
- * Description:
- *      This file should be included in the form pages
+ * Date: August 2014
+ * Description: 
+ *      this script is responsible for taking in a user's input, calculating the output, displaying
+ *      the output, showing/hiding divs, and saving all the values to the FirebaseDB. 
+ *      
  !**/
 
- // This script is responsible for lots of shit. 
 
 
 function percent(num){
@@ -17,23 +18,19 @@ function calculate() {
     var companyName = $('companyName').val();
     $('companyName').val(companyName);
 
-    // Retrieve value from the amount field
-    var B14 = parseFloat($('#B14').val().replace(/,/g,'')); //turn B14 from a string w/ commas to a number 
-    console.log("poop: " +B14);
-    // Store the value in the total field. Note that the 'Number' 
-    // function converts a string of numbers into numbers
-
-    $('#B14').val( B14.toLocaleString() ); //.toFixed(2) );
-    // toFixed ensures there are only two digits after the dec point
-
+    // Retrieve value from the amount field using .val()
+    //turn B14 from a string w/ commas to a number that can be calculated bc a string can't be calculated
+    var B14 = parseFloat($('#B14').val().replace(/,/g,'')); 
+    // toLocaleString() puts commas into long numbers to improve readability
+    $('#B14').val( B14.toLocaleString() ); 
 
     var B16 = $('#B16').val();
+
+    //Number() function converts a string of numbers into numbers
     var B17 = B14 / percent( Number(B16) );
     $('#B17').val( B17.toLocaleString() );
 
 
-    //var B20 = $('#B20').val();
-    //var B21 = $('#B21').val();
     var B20= 1;
     $('#B20').val(B20);
     var B21 = 99;
@@ -54,7 +51,7 @@ function calculate() {
     $('#B28').val(B28);
 
 
-    // the following function rounds our percentage down to 2 decimal places
+    // round() rounds our percentage down to 2 decimal places
     function round(num, places) {
     var multiplier = Math.pow(10, places);
     return Math.round(num * multiplier) / multiplier;
@@ -84,8 +81,7 @@ function calculate() {
     $('#B38').val( B38.toLocaleString() );
 
 
-    // var B40 = $('#B40').val();
-    //if user input a CPC value, use that value in the calculation. else, use default value of half a penny
+    //if user inputs a CPC value, use that value in the calculation. else, use default value of half a penny
     if ($('#B40').val()) {
         B40 = $('#B40').val();
         console.log("Used user's CPC value");
@@ -122,16 +118,8 @@ function calculate() {
     $('#B58').val(B58);
     $('#B59').val(B59);
 
-    //scrollTop 
-    if (i == 0){
-        $("html,body").animate({ scrollTop: 0}, 600);
-        i++;
-    } else {
-        //don't scroll
-    }
+    //Unide form values after submission
 
-    //Unhide Shit
-    // hide this bc David doesn't want to see it    $('#B17_CONTAINER').show(); 
     $('#B23_CONTAINER').show();
     $('#B24_CONTAINER').hide();
     $('#B25_CONTAINER').show();
@@ -154,9 +142,7 @@ function calculate() {
     $('#B59_CONTAINER').show();
     $('#economicSummary').show();
     $('#submit_Box3').hide(); 
-    $('#saveBox1').show();
-    $('#saveBox2').show();
-    $('#saveBox3').show();
+
     $('#box1-footer').show();
     $('#rightSidebar').show();
 
@@ -164,10 +150,8 @@ function calculate() {
     //$('#collapseWrapper').show();
     $('#collapse').show();
 
-    // Hides the initial form before submission 
-
+    // Hides the initial Public Assumptions form before submission 
     $('#publisherAssumptions').hide();
-
 
     //the following scripts fades in the various sections when a user clicks on the Reveal sidebar
     $('#publisherAssumptionsLink').click(function() {
@@ -190,8 +174,8 @@ function calculate() {
         });
     });  
 
-    //this code block gets the .json file for the form just generated. remember: the values stored in the database
-    //for a particular company will get updated anytime you create a new form w/ the same company name
+    //this code block gets the .json file for the form just generated. Note: creating a new form 
+    // of the same company name will overwrite that company's data in the FirebaseDB
     var companyName = $('#companyName').val();
     $('#json').click(function(){
         window.open('https://neonpricing.firebaseio.com/'+companyName+'.json','_blank');
@@ -202,13 +186,11 @@ function calculate() {
 }
 
 
-
-var i =0; //counter to stop scrolling to top after first submission of #main_form
 $('#main_form').submit( calculate );
 
 
 
-// Hide Shit
+// This function hides all the parts of the form we don't want to see before the user submits
 $(document).ready(function(){
     $('#B17_CONTAINER').hide();
     $('#B23_CONTAINER').hide();
@@ -231,19 +213,12 @@ $(document).ready(function(){
     $('#B56_CONTAINER').hide();
     $('#B58_CONTAINER').hide();
     $('#B59_CONTAINER').hide();
+
     $('#economicSummary').hide();
     $('#served').hide();
-    $('#saveBox1').hide();
-    $('#saveBox2').hide();
-    $('#saveBox3').hide();
-    $('#box1-footer').hide();
-    $('#saveSuccessful').hide();
-    $('#saveSuccessful2').hide();
-    $('#saveSuccessful3').hide();
     $('#collapse').hide();
     $('#rightSidebar').hide();
     $('#byComparison').hide();
-    // $('#collapseWrapper').hide();
 
     $('#served').hide();
     $('#clicks').hide();
@@ -252,7 +227,7 @@ $(document).ready(function(){
 
 });
 
-// inserts commas into B14, aka "Video streams that Neon could influence per month"
+// format () inserts commas into B14(Video streams that Neon could influence per month)
 // The key is to use 'onkeyup'
 function format(input)
 {
@@ -268,25 +243,32 @@ function format(input)
     input.value = x1 + x2;
 }
 
+// global variables to keep track of my FirebaseDB references
+// read up on docs here https://www.firebase.com/docs/web/guide/
 var newPushRef;
 var myDataRef;
 var companyRef; // for the "data" child and url 
 
 $('#main_form').submit(function () {
 
+    //Each form has a unique ID, it's company name. All entries in FirebaseDB are listed by companyName.
     var companyName = $('#companyName').val();
-    console.log(companyName);
-    myDataRef = new Firebase("https://neonpricing.firebaseio.com/"+ companyName);
-//    newPushRef = myDataRef.push(); //push adds to a list of data. generates a unique ID 
-    companyRef = myDataRef.child("data");
 
+    //creates new entry in FirebaseDB
+    myDataRef = new Firebase("https://neonpricing.firebaseio.com/"+ companyName); 
+
+    //The following lines save all the form information underneath 'data'. File structure: 'companyName' > 'data' > values
+
+    //Each B14, B16, is a variable that matches the row/column in Jay's original excel sheet (v140620)
+    
+    companyRef = myDataRef.child("data");
     companyRef.set({
     companyName: $('#companyName').val(),
     B14: $('#B14').val(),
     B16: $('#B16').val(),
     B17: $('#B17').val(),
-    B20: 1,
-    B21: 99,
+    B20: 1, //Default value
+    B21: 99, //Default value
     B23: $('#B23').val(),
     B24: $('#B24').val(),
     B25: $('#B25').val(),
@@ -309,58 +291,3 @@ $('#main_form').submit(function () {
     });    
 
 })
-
-
-
-var pushedMyDataRef =  companyRef; //what do I .set()? pushedMyDataRef or newPushRef? 
-
-$('#saveBox1').click(function (){
-    console.log("whuu");
-     pushedMyDataRef.set({
-    
-        B14: $('#B14').val(),
-        B16: $('#B16').val(),
-        B17: $('#B17').val(),
-        });
-
-        $('#saveSuccessful').fadeIn(500).delay(2000).fadeOut(1000);
-})
-
-$('#saveBox2').click(function (){
-    console.log("whuu");
-     pushedMyDataRef.set({
-        B20: 1,
-        B21: 99,
-        B23: $('#B23').val(),
-        B24: $('#B24').val(),
-        B25: $('#B25').val(),
-        B27: $('#B27').val(),
-        B28: $('#B28').val(),
-        B29: $('#B29').val(),
-        B31: $('#B31').val(),
-        B32: $('#B32').val(),
-        B34: $('#B34').val(),
-        B35: $('#B35').val(),
-        B37: $('#B37').val(),
-        B38: $('#B38').val(),
-        B42: $('#B42').val(),
-        });
-
-        $('#saveSuccessful2').fadeIn(500).delay(1500).fadeOut(1000);
-})
-
-$('#saveBox3').click(function (){
-    console.log("whuu");
-     pushedMyDataRef.set({
-        B46: $('#B46').val(),
-        B47: $('#B47').val(),
-        B48: $('#B48').val(),
-        B49: $('#B49').val(),
-        B50: $('#B50').val(),
-        });
-
-        $('#saveSuccessful3').fadeIn(500).delay(2000).fadeOut(1000);
-})
-
-
-

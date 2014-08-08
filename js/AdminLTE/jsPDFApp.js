@@ -1,46 +1,48 @@
-/*
-@Author: Jasmine Lee
-This app 
-*/
+ /*!
+ * Author: Jasmine Lee
+ * Date: August 2014
+ * Description:
+ *      This script contains all the code that generates the PDF.
+ !**/
 
 // Get client's time zone
 function getTimeZone() {
-var now = new Date().toString();
-var TZ = now.indexOf('(') > -1 ?
-now.match(/\([^\)]+\)/)[0].match(/[A-Z]/g).join('') :
-now.match(/[A-Z]{3,4}/)[0];
-if (TZ == "GMT" && /(GMT\W*\d{4})/.test(now)) TZ = RegExp.$1;
-return TZ;
+	var now = new Date().toString();
+	var TZ = now.indexOf('(') > -1 ?
+		now.match(/\([^\)]+\)/)[0].match(/[A-Z]/g).join('') :
+		now.match(/[A-Z]{3,4}/)[0];
+		if (TZ == "GMT" && /(GMT\W*\d{4})/.test(now)) TZ = RegExp.$1;
+		return TZ;
 
-}
+	}
 
 //Get client's time and date
 function getDateTime() {
-    var now     = new Date(); 
-    var year    = now.getFullYear();
-    var month   = now.getMonth()+1; 
-    var day     = now.getDate();
-    var hour    = now.getHours();
-    var minute  = now.getMinutes();
-    var second  = now.getSeconds(); 
+	var now     = new Date(); 
+	var year    = now.getFullYear();
+	var month   = now.getMonth()+1; 
+	var day     = now.getDate();
+	var hour    = now.getHours();
+	var minute  = now.getMinutes();
+	var second  = now.getSeconds(); 
 
-    if(month.toString().length == 1) {
-        var month = '0'+month;
-    }
-    if(day.toString().length == 1) {
-        var day = '0'+day;
-    }   
-    if(hour.toString().length == 1) {
-        var hour = '0'+hour;
-    }
-    if(minute.toString().length == 1) {
-        var minute = '0'+minute;
-    }
-    if(second.toString().length == 1) {
-        var second = '0'+second;
-    }   
-    var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second + ' ' + getTimeZone();   
-    return dateTime;
+	if(month.toString().length == 1) {
+		var month = '0'+month;
+	}
+	if(day.toString().length == 1) {
+		var day = '0'+day;
+	}   
+	if(hour.toString().length == 1) {
+		var hour = '0'+hour;
+	}
+	if(minute.toString().length == 1) {
+		var minute = '0'+minute;
+	}
+	if(second.toString().length == 1) {
+		var second = '0'+second;
+	}   
+	var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second + ' ' + getTimeZone();   
+	return dateTime;
 }
 
 
@@ -84,62 +86,6 @@ function demoFromHTML(){
 	doc.setFontSize(12);
 	doc.text(20, 115, '$'+ $('#B56').val() );
 
-	/* 
-	doc.setFontSize(13);
-	doc.text(20, 125, 'Estimated Click Rate on Default Thumbnails');
-	doc.setFontSize(12);
-	doc.text(20, 130, $('#B16').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 140, 'Inferred Tracked Thumbnail Views');
-	doc.setFontSize(12);
-	doc.text(20, 145, $('#B17').val() );
-
-	doc.setFontSize(13);
-	doc.setFontStyle('bold');
-	doc.text(20, 155, 'During an Implementation');
-
-	doc.setFontStyle('normal');
-	doc.setFontSize(13);
-	doc.text(20, 165, 'Percentage of Thumbnail Views Where Neon Serves Default Thumbnails');
-	doc.setFontSize(12);
-	doc.text(20, 170, $('#B20').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 180, 'Percentage of Thumbnail Views where Neon serves Neon Thumbnails');
-	doc.setFontSize(12);
-	doc.text(20, 185, $('#B21').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 195, 'Default Tracked Thumbnail Views ("A" in the A/B test)');
-	doc.setFontSize(12);
-	doc.text(20, 200, $('#B23').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 210, 'Total Tracked Thumbnail Views');
-	doc.setFontSize(12);
-	doc.text(20, 215, $('#B24').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 225, 'Default Click Rate');
-	doc.setFontSize(12);
-	doc.text(20, 230, $('#B25').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 240, 'Neon Lift Rate');
-	doc.setFontSize(12);
-	doc.text(20, 245, $('#B27').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 255, 'Neon Click Rate');
-	doc.setFontSize(12);
-	doc.text(20, 260, $('#B29').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 270, 'Tracked Default Clicks');
-	doc.setFontSize(12);
-	doc.text(20, 275, $('#B31').val() );
-	*/
 
 	doc.setFontSize(8);
 	doc.text(170, 285, '1/1 Economic Summary');
@@ -275,70 +221,6 @@ function demoFromHTML(){
 	doc.setFontSize(12);
 	doc.text(20, 95, '$'+ $('#B42').val() );
 
-	/* doc.setFontSize(13);
-	doc.text(20, 115, 'Average pre-rolls per stream');
-	doc.setFontSize(12);
-	doc.text(20, 120, $('#B49').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 135, "CPC for Incremental Clicks");
-	doc.setFontSize(12);
-	doc.text(20,140, $('#B40').val() );
-
-	doc.setFontSize(13);
-	doc.setFontStyle('bold');
-	doc.text(20, 150, 'Served');
-
-	doc.setFontSize(12);
-	doc.setFontStyle('normal');
-	doc.text(20, 160, 'Thumbnail views where Neon serves: publisher supplied thumbnails | Neon thumbnails');
-	doc.setFontSize(12);
-	doc.text(20, 165, $('#B20').val()+" | "+ $('#B21').val() );
-
-	doc.setFontSize(12);
-	doc.text(20, 175, 'Publisher supplied thumbnail views ("A" in the A/B test) | Neon supplied ("B" in the A/B test)');
-	doc.setFontSize(12);
-	doc.text(20, 180, $('#B23').val() + " | " + $('#B24').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 180, 'Total thumbnail views');
-	doc.setFontSize(12);
-	doc.text(20, 185, $('#B25').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 195, "Default Click Rate");
-	doc.setFontSize(12);
-	doc.text(20, 200, $('#B27').val() + '%');
-
-	doc.setFontSize(13);
-	doc.setFontStyle('normal');
-	doc.text(20, 210, 'Neon Lift Rate | Neon Click Rate');
-	doc.setFontSize(12);
-	doc.text(20, 215, $('#B28').val() + ' | ' + $('#B29').val() + '%' );
-
-	doc.setFontSize(13);
-	doc.setFontStyle('bold');
-	doc.text(20, 225, 'Clicks');
-
-	doc.setFontSize(13);
-	doc.setFontStyle('normal');
-	doc.text(20, 235, 'Publisher views * publisher click rate');
-	doc.setFontSize(12);
-	doc.text(20, 240, $('#B31').val() );
-
-	doc.setFontSize(13);
-	doc.text(20, 250, 'Neon views * Neon click rate');
-	doc.setFontSize(12);
-	doc.text(20, 255, $('#B32').val() );
-
-	doc.setFontSize(13);
-	doc.setFontStyle('normal');
-	doc.text(20, 265, 'Without Neon');
-	doc.setFontSize(12);
-	doc.text(20, 270, $('#B34').val() );
-
-	*/
-
 	//small font and large XY values for page footer
 	doc.setFontSize(8);
 	doc.text(170, 285, '2/2 Implementation Details');
@@ -347,55 +229,4 @@ function demoFromHTML(){
 
 
 
-    } 
-
-/*
-function demoFromHTML() {
-	console.log("is this working?");
-	var pdf = new jsPDF('p', 'pt', 'letter')
-
-	pdf.setFont('helvetica')
-	, pdf.setFontType('normal')
-	, pdf.text(20, 30, 'This is normal font')
-	// source can be HTML-formatted string, or a reference
-	// to an actual DOM element from which the text will be scraped.
-	, source = $('#fromHTMLtestdiv')[0]
-
-	// we support special element handlers. Register them with jQuery-style 
-	// ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
-	// There is no support for any other type of selectors 
-	// (class, of compound) at this time.
-	, specialElementHandlers = {
-		// element with id of "bypass" - jQuery style selector
-		'#bypassme': function(element, renderer){
-			// true = "handled elsewhere, bypass text extraction"
-			return true
-		}
-	}
-	
-
-	margins = {
-      top: 80,
-      bottom: 60,
-      left: 40,
-      width: 522
-    };
-    // all coords and widths are in jsPDF instance's declared units
-    // 'inches' in this case
-    pdf.fromHTML(
-    	source // HTML string or DOM elem ref.
-    	, margins.left // x coord
-    	, margins.top // y coord
-    	, {
-    		'width': margins.width // max width of content on PDF
-    		, 'elementHandlers': specialElementHandlers
-    	},
-    	function (dispose) {
-    	  // dispose: object with X, Y of the last line add to the PDF 
-    	  //          this allow the insertion of new lines after html
-          pdf.save('Test.pdf');
-        },
-    	margins
-    )
-}
-*/
+} 
