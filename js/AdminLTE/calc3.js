@@ -119,27 +119,6 @@ function calculate() {
     $('#B59').val(B59);
 
     //Unide form values after submission
-
-    $('#B23_CONTAINER').show();
-    $('#B24_CONTAINER').hide();
-    $('#B25_CONTAINER').show();
-    $('#B27_CONTAINER').show();
-    $('#B29_CONTAINER').show();
-    $('#B31_CONTAINER').show();
-    $('#B32_CONTAINER').show();
-    $('#B34_CONTAINER').show();
-    $('#B35_CONTAINER').show();
-    $('#B37_CONTAINER').show();
-    $('#B38_CONTAINER').show();
-    $('#B40_CONTAINER').show();
-    $('#B42_CONTAINER').show();
-    $('#B46_CONTAINER').show();
-    $('#B50_CONTAINER').show();
-    $('#B54_CONTAINER').show();
-    $('#B55_CONTAINER').show();
-    $('#B56_CONTAINER').show();
-    $('#B58_CONTAINER').show();
-    $('#B59_CONTAINER').show();
     $('#economicSummary').show();
     $('#submit_Box3').hide(); 
 
@@ -192,28 +171,8 @@ $('#main_form').submit( calculate );
 
 // This function hides all the parts of the form we don't want to see before the user submits
 $(document).ready(function(){
-    $('#B17_CONTAINER').hide();
-    $('#B23_CONTAINER').hide();
-    $('#B24_CONTAINER').hide();
-    $('#B25_CONTAINER').hide();
-    $('#B27_CONTAINER').hide();
-    $('#B29_CONTAINER').hide();
-    $('#B31_CONTAINER').hide();
-    $('#B32_CONTAINER').hide();
-    $('#B34_CONTAINER').hide();
-    $('#B35_CONTAINER').hide();
-    $('#B37_CONTAINER').hide();
-    $('#B38_CONTAINER').hide();
-    $('#B40_CONTAINER').hide();
-    $('#B42_CONTAINER').hide();
-    $('#B46_CONTAINER').hide();
-    $('#B50_CONTAINER').hide();
-    $('#B54_CONTAINER').hide();
-    $('#B55_CONTAINER').hide();
-    $('#B56_CONTAINER').hide();
-    $('#B58_CONTAINER').hide();
-    $('#B59_CONTAINER').hide();
 
+    $("#B17_CONTAINER").hide();
     $('#economicSummary').hide();
     $('#served').hide();
     $('#collapse').hide();
