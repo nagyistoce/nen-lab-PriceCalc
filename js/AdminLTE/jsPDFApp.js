@@ -5,7 +5,7 @@
  *      This script contains all the code that generates the PDF.
  !**/
 
-// Get client's time zone
+// Get client's time zone abbreviation, eg PDT 
 function getTimeZone() {
 	var now = new Date().toString();
 	var TZ = now.indexOf('(') > -1 ?
