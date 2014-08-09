@@ -1,4 +1,4 @@
-
+Neon Pricing Calc for internal use
 ------------------------
 
  Based on **Bootstrap 3** framework. Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops. 
